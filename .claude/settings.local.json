@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh api *)",
+      "Bash(curl -sL https://raw.githubusercontent.com/SimpleScaffold/ss-design-krds/main/README.ko.md)",
+      "Bash(bash /tmp/claude-1000/-home-ravenkim97-job-ss-design-system/5769fe68-4a5c-45cd-bc83-0011d12c9974/scratchpad/make_readmes.sh)"
+    ]
+  }
+}
