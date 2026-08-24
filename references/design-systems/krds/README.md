@@ -17,18 +17,23 @@ KRDS 공식 문서/스타일가이드/패턴 원자료 및 요약.
 
 ## 공식 스타일 가이드 (krds.go.kr)
 
-사이트는 **디자인 스타일**(6페이지) → **컴포넌트**(12개 카테고리, 60여 페이지) → **기본 패턴 / 서비스 패턴** 순으로 구성된다. `framework/adapters/krds/*.md` 매핑 문서는 아래 6페이지를 1차 소스로 작성했다.
+사이트는 **디자인 스타일**(9페이지) → **컴포넌트**(12개 카테고리, 60여 페이지) → **기본 패턴 / 서비스 패턴** 순으로 구성된다. "디자인 스타일" 섹션 9페이지 전체는 다음과 같다 — `framework/adapters/krds/*.md` 매핑 문서가 이를 1차 소스로 작성됐다.
 
-| 페이지 | 제목 | 대응 매핑 문서 |
-| --- | --- | --- |
-| [style_02](https://www.krds.go.kr/html/site/style/style_02.html) | 색상 (Color) | [`colors.md`](../../../framework/adapters/krds/colors.md) |
-| [style_03](https://www.krds.go.kr/html/site/style/style_03.html) | 타이포그래피 (Typography) | [`typography.md`](../../../framework/adapters/krds/typography.md) |
-| [style_04](https://www.krds.go.kr/html/site/style/style_04.html) | 형태 (Shape) | [`radius.md`](../../../framework/adapters/krds/radius.md) |
-| [style_05](https://www.krds.go.kr/html/site/style/style_05.html) | 레이아웃 (Layout) | [`layout.md`](../../../framework/adapters/krds/layout.md) |
-| [style_06](https://www.krds.go.kr/html/site/style/style_06.html) | 아이콘 (Icon) | [`icon.md`](../../../framework/adapters/krds/icon.md) |
-| [style_07](https://www.krds.go.kr/html/site/style/style_07.html) | 디자인 토큰 (Design Token) | 각 매핑 문서 §토큰화 섹션 |
+| 페이지 | 제목 | 상태 | 대응 매핑 문서 |
+| --- | --- | --- | --- |
+| [style_01](https://www.krds.go.kr/html/site/style/style_01.html) | 디자인 스타일 소개 | 반영 (아래 "표준형 vs 확장형" 절) | 별도 문서 없음 — 개요·철학이라 매핑 대상 아님 |
+| [style_02](https://www.krds.go.kr/html/site/style/style_02.html) | 색상 (Color) | 반영 | [`colors.md`](../../../framework/adapters/krds/colors.md) |
+| [style_03](https://www.krds.go.kr/html/site/style/style_03.html) | 타이포그래피 (Typography) | 반영 | [`typography.md`](../../../framework/adapters/krds/typography.md) |
+| [style_04](https://www.krds.go.kr/html/site/style/style_04.html) | 형태 (Shape) | 반영 | [`radius.md`](../../../framework/adapters/krds/radius.md) |
+| [style_05](https://www.krds.go.kr/html/site/style/style_05.html) | 레이아웃 (Layout) | 반영 | [`layout.md`](../../../framework/adapters/krds/layout.md) |
+| [style_06](https://www.krds.go.kr/html/site/style/style_06.html) | 아이콘 (Icon) | 반영 | [`icon.md`](../../../framework/adapters/krds/icon.md) |
+| [style_07](https://www.krds.go.kr/html/site/style/style_07.html) | 디자인 토큰 (Design Token) | 반영 | 각 매핑 문서 §토큰화 섹션 |
+| [style_08](https://www.krds.go.kr/html/site/style/style_08.html) | 엘리베이션 (Elevation) | 반영 | [`elevation.md`](../../../framework/adapters/krds/elevation.md) (공통 스펙: [`framework/specs/tokens/elevation.md`](../../../framework/specs/tokens/elevation.md)) |
+| [style_09](https://www.krds.go.kr/html/site/style/style_09.html) | 선명한 화면 모드 (High Contrast Mode) | 반영 | [`colors.md`](../../../framework/adapters/krds/colors.md) §10 (공통 스펙: `colors.md` §12) |
 
 값 자체는 어댑터 문서에 옮겨뒀으므로 여기서는 발표 콘텐츠 구성에 참고할 만한 **디자인 철학/근거**만 요약한다.
+
+> 참고: `style_08`/`style_09`는 스타일 가이드 본문에 정확한 수치(box-shadow 조합, RGB 계산식 등)를 공개하지 않는다. 위 매핑 문서의 실제 hex/px 값은 krds-uiux 공개 토큰(`tokens/transformed_tokens.json`)에서 가져온 것 — 본문 서술과 실제 배포 토큰 값을 함께 대조해 작성했다.
 
 ### 표준형 vs 확장형 스타일
 

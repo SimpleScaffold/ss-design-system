@@ -17,7 +17,7 @@
 - [ ] validation 스펙 스키마 — 미착수 (디렉터리조차 없음)
 
 ## 3. 범용 프레임워크 — 어댑터 (`framework/adapters/`)
-- [x] `krds/` — colors/typography/radius/layout/icon 토큰 실제 매핑 완료 (KRDS 공식 스타일 가이드 + krds-uiux 토큰 JSON 기반). components/validation은 공통 스펙 자체가 없어 매핑 보류
+- [x] `krds/` — colors/typography/radius/layout/icon/elevation 토큰 실제 매핑 완료 (KRDS 공식 스타일 가이드 9페이지 전체 + krds-uiux 토큰 JSON 기반, 고대비 모드는 `colors.md` §10). components/validation은 공통 스펙 자체가 없어 매핑 보류
 - [x] `material/` — colors/typography/radius/layout/icon 매핑 완료 (material-color-utilities + material-web 토큰 소스 코드 기반)
 - [x] `ant-design/` — colors/typography/radius/layout/icon 매핑 완료 (antd v5 theme seed/algorithm 소스 코드 기반)
 - [x] `_template/` — 신규 어댑터 작성 가이드(사용법, 문서 구조, 체크사항) 작성 완료
@@ -34,6 +34,7 @@
 ## 6. 참고자료 (`references/`)
 - [x] KRDS, taste-skill, 색 조합 16가지 수집 완료
 - [x] KRDS 공식 스타일 가이드(krds.go.kr) 요약 보강 — 표준형/확장형 구분, 접근성 설계 근거, 토큰 3계층 구조, 발표 인용 문구
+- [x] KRDS 스타일 가이드 9페이지 전체(01 소개~09 선명한 화면 모드) 리스트업 및 매핑 상태 정리 — 누락돼 있던 `elevation`(엘리베이션), 고대비 모드를 공통 스펙(`framework/specs/tokens/elevation.md`, `colors.md` §12)과 KRDS 어댑터(`elevation.md`, `colors.md` §10)에 추가
 - [ ] `design-systems/` 나머지 시스템(material-design, ant-design, carbon, fluent, apple-hig) 자료 정리 상태 확인 및 보강
 - [ ] `ai-agent-workflows/` 사례·논문 수집
 - [ ] `conference-talks/` 관련 기존 발표 요약
