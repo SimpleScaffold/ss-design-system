@@ -115,7 +115,7 @@ Semantic   → color-icon-primary, color-border-gray-light   (디자인 툴에�
 Component  → --namespace-component--theme-type-size-modifier (코드에서 정의)
 ```
 
-공통 스펙 예시(`--color-primary: var(--primary-50)`)는 KRDS의 Semantic 토큰 레벨에 해당한다. Component 토큰은 KRDS에서 의도적으로 디자인 툴이 아닌 코드에서만 정의하도록 역할을 분리한다 — 어댑터 작성 시 이 경계를 유지할 것.
+공통 스펙의 `--primary`(시맨틱)가 KRDS Semantic 토큰 레벨에 해당하고, `primary-50` 같은 단계는 Primitive다. Component 토큰은 KRDS에서 의도적으로 디자인 툴이 아닌 코드에서만 정의하도록 역할을 분리한다 — 어댑터 작성 시 이 경계를 유지할 것.
 
 ## 9. (심화) 투명도 → Alpha 5단계
 

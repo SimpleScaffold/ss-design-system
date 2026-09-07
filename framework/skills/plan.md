@@ -15,7 +15,7 @@
 
 ## 절차
 
-1. **Color** — `tokens/colors.md`를 순서대로 따라간다: 60-30-10 비율 확인 → Primary 선정 → HSL L값 기반 팔레트 10단계 생성 → 명암비 4.5 검증(§4) → 상태색(§5) → 배경 레이어(§6) → 보조 팔레트(§7).
+1. **Color** — `tokens/colors.md`를 순서대로 따라간다: 60-30-10 비율 확인 → Primary 선정 → oklch L(또는 HSL L)만 조정한 단계 팔레트 → 명암비 4.5 검증(§4) → 상태를 `--primary`에서 파생(§5) → `--background`/`--card` 레이어(§6) → `--destructive` 등 시맨틱 이름에 올리기(§7·§9). 출력 형식은 `examples/tokens/tokens.css`와 같은 `:root` / `.dark` oklch 계약이다.
 2. **Typography / Radius / Icon** — `tokens/typography.md`, `radius.md`, `icon.md`를 각각 한 번씩 통과하며 "폰트 1개, radius 1개, 아이콘 라이브러리 1개"를 확정한다. 처음엔 스펙이 권장하는 최소 단계로 시작 — 필요해지면 늘린다.
 3. **Layout / Spacing** — `tokens/layout.md`(그리드·브레이크포인트) + `spacing.md`(8px 단위)를 확정한다. 플랫폼 제약(예: 앱인토스의 Safe Area — `examples/toss/safe-area.md`)이 있으면 이 단계에서 함께 반영한다.
 4. **Component Contract** — `components/component-contract.md`의 구조를 따라, 이 프로젝트에서 가장 먼저 필요한 컴포넌트 3~5개(보통 Button/Input/Card/Badge)의 Variant×State→Token 표를 채운다.
@@ -23,7 +23,7 @@
 
 ## 출력
 
-- 위 5단계를 채운 토큰 문서 1벌 (CSS 커스텀 프로퍼티 또는 Tailwind 설정 형태 — `framework/specs/tokens/colors.md` §9 토큰화 예시 형식을 따른다)
+- 위 5단계를 채운 토큰 문서 1벌. 색은 [`prompts/framework/color-tokens.md`](../../prompts/framework/color-tokens.md) 계약 — `examples/tokens/tokens.css`를 복사하고 `--primary`만 덮어쓴 `:root` / `.dark` oklch 파일.
 - 프로젝트별 Component Contract 표
 
 ## framework/specs·adapters와의 관계

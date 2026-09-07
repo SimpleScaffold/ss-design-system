@@ -26,4 +26,4 @@ references/<디렉터리>/README.md에 사례/아티클/도구 목록을 정리�
 ## 관련
 
 - 적용 사례: [`references/ai-agent-workflows/README.md`](../../references/ai-agent-workflows/README.md), [`references/conference-talks/README.md`](../../references/conference-talks/README.md)
-- 기존 항목(이 프롬프트 이전에 작성됨): [`references/tools/README.md`](../../references/tools/README.md)
+- 기존 항목(이 프롬프트 이전에 작성됨): [`references/tools/`](../../references/tools/) (인덱스 + `ui-kits/` React Bits 등)

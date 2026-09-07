@@ -1,0 +1,15 @@
+---
+description: 색 토큰이나 색 관련 프롬프트를 만들 때 shadcn oklch 시맨틱 계약을 따른다
+globs: prompts/**/*.md,examples/tokens/**,examples/design-rules.md,framework/specs/tokens/colors.md,framework/skills/*.md
+alwaysApply: false
+---
+
+# 색 토큰 계약
+
+색 토큰을 만들거나, 색을 다루는 프롬프트·스킬·스펙을 쓸 때는 [`prompts/framework/color-tokens.md`](../../prompts/framework/color-tokens.md)를 따른다.
+
+- 출발점: `examples/tokens/tokens.css`의 `:root` / `.dark`
+- 값은 `oklch(...)`. 브랜드 hex는 `--primary`(필요 시 `--sidebar-primary`)에만 변환해 넣는다
+- 시맨틱 이름을 바꾸거나 `--color-primary`, `--primary-50`, `--primary-hover`를 public API로 쓰지 않는다
+- Hover/Pressed는 `color-mix(in oklch, var(--primary) 88%/76%, var(--foreground))`
+- 새 프롬프트에 색 규칙이 있으면 `color-tokens.md`를 가리키거나 그 프롬프트를 포함한다

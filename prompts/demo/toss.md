@@ -1,6 +1,6 @@
 # 토스 스타일 디자인 프롬프트
 
-> 출처: `talk/script.md` 슬라이드 5 (토스 60-30-10 사례) · `framework/specs/tokens/colors.md`, `radius.md`, `spacing.md`, `layout.md`, `typography.md`의 공통 규칙을 토스의 실제 브랜드 색에 대입한 예시.
+> 출처: `talk/script.md` 슬라이드 5 (토스 60-30-10 사례) · `framework/specs/tokens/colors.md`, `radius.md`, `spacing.md`, `layout.md`, `typography.md`의 공통 규칙을 토스의 실제 브랜드 색에 대입한 예시. 색 토큰 형식은 [`../framework/color-tokens.md`](../framework/color-tokens.md).
 > 용도: Stitch, Claude Design 등 AI 디자인 생성 도구에 그대로 붙여넣어 "규칙을 전달했을 때와 안 했을 때"를 비교하는 라이브 데모용.
 
 ## 브랜드 색상 참고
@@ -19,12 +19,12 @@
 당신은 시니어 프로덕트 디자이너입니다. 아래 규칙을 반드시 지켜서 모바일 금융 앱의 홈 화면 UI를 디자인해 주세요.
 
 [색상]
-- 화면 전체 면적 비율은 60(배경) : 30(구분 영역) : 10(Primary 강조)를 따른다.
-- Primary는 파란색 계열(#3182F6 근처)이며, 이 화면 안에서 딱 하나 — 가장 중요한 강조 버튼/숫자에만 사용한다.
-- 배경(60%)은 흰색 또는 아주 옅은 회색(#F9FAFB 근처)으로, 화면 대부분을 차지하는 무채색이다.
-- 구분 영역(30%)은 카드/리스트 섹션으로, 배경보다 한 톤 어둡거나 얇은 보더로 구분되는 옅은 회색(#F2F4F6 근처)을 쓴다.
-- Primary 팔레트는 HSL의 L(명도)값만 단계별로 조정해 10단계(10~100)로 생성한다. 텍스트 색은 배경과의 명암비 4.5 이상을 만족하는 흰색/검정 중 하나를 선택한다.
-- 버튼 상태: Default = Primary-50, Hover = Primary-60, Pressed = Primary-70. 상태 간 명암비가 급격히 반전되거나 큰 폭으로 뛰지 않게 한다.
+- 색 토큰은 shadcn 시맨틱 계약이다. 이름: --background / --foreground / --card / --primary / --primary-foreground / --muted / --destructive / --border / --ring. 값은 oklch. hex를 컴포넌트에 직접 쓰지 않는다.
+- 면적 비율: 60% --background / 30% --card·--muted / 10% --primary.
+- --primary는 토스 블루(#3182F6를 oklch로 변환). 이 화면에서 가장 중요한 강조 버튼/숫자에만 쓴다. 그 위 글자는 --primary-foreground (명암비 4.5+).
+- 뉴트럴(--background, --card, --muted, --border)은 chroma 0을 유지한다.
+- Hover/Pressed는 Primary-50/60이 아니라 color-mix(in oklch, var(--primary) 88%/76%, var(--foreground)).
+- 토큰 파일을 만들면 examples/tokens/tokens.css를 복사하고 --primary만 덮어쓴다. --color-primary 같은 옛 이름은 쓰지 않는다.
 
 [Radius]
 - 카드/버튼/입력창 등 모든 컴포넌트에 하나의 radius 값(8px 근처)만 통일해서 사용한다.

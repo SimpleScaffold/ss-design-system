@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>B안 · 디자인 시스템 규칙으로 만든 화면</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <style>
+    /*
+      tokens.css 계약을 따르고 --primary만 토스 블루(#3182F6)로 덮어씀.
+      규칙: prompts/demo/toss.md + framework/specs/tokens/*
+    */
+    html { font-size: 62.5%; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body, button, input, textarea, select {
+      font-family: var(--font-family-base);
+    }
+
+    :root {
+      --background: oklch(1 0 0);
+      --foreground: oklch(0.145 0 0);
+      --card: oklch(1 0 0);
+      --card-foreground: oklch(0.145 0 0);
+      --primary: oklch(0.623 0.168 258);
+      --primary-foreground: oklch(0.985 0 0);
+      --muted: oklch(0.97 0 0);
+      --muted-foreground: oklch(0.556 0 0);
+      --destructive: oklch(0.577 0.245 27.325);
+      --border: oklch(0.922 0 0);
+      --ring: oklch(0.708 0 0);
+      --radius: 8px;
+
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 16px;
+      --space-4: 24px;
+      --space-5: 32px;
+
+      --layout-gutter: 24px;
+
+      --font-family-base: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      --text-heading-1-size: 2.8rem;
+      --text-heading-2-size: 2.2rem;
+      --text-body-1-size: 1.6rem;
+      --text-body-2-size: 1.4rem;
+      --text-caption-size: 1.2rem;
+    }
+
+    body {
+      min-height: 100vh;
+      background: oklch(0.97 0 0);
+      color: var(--foreground);
+      font-family: var(--font-family-base);
+      font-size: 1.6rem;
+      line-height: 1.6;
+    }
+
+    .page-bar {
+      padding: var(--space-4) var(--space-5) var(--space-3);
+    }
+    .page-bar h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    .page-bar p {
+      margin-top: var(--space-1);
+      font-size: 1.4rem;
+      color: var(--muted-foreground);
+    }
+
+    .phones {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      justify-content: center;
+      padding: var(--space-3) var(--space-4) var(--space-6, 40px);
+    }
+
+    .phone {
+      width: 390px;
+      height: 844px;
+      background: var(--background);
+      border: 1px solid var(--border);
+      border-radius: 32px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 1px 2px oklch(0.145 0 0 / 8%);
+    }
+
+    .status {
+      height: 48px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding: 0 var(--layout-gutter) var(--space-2);
+      font-size: var(--text-caption-size);
+      font-weight: 600;
+      color: var(--foreground);
+      flex-shrink: 0;
+    }
+
+    .screen {
+      flex: 1;
+      overflow: auto;
+      padding: 0 var(--layout-gutter) var(--space-4);
+    }
+
+    .label-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: var(--space-3);
+    }
+    .label-row h2 {
+      font-size: var(--text-heading-2-size);
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    .label-row span {
+      font-size: var(--text-caption-size);
+      color: var(--muted-foreground);
+      line-height: 1.4;
+    }
+
+    .caption {
+      font-size: var(--text-caption-size);
+      color: var(--muted-foreground);
+      line-height: 1.4;
+    }
+    .body {
+      font-size: var(--text-body-1-size);
+      line-height: 1.6;
+    }
+    .body-sm {
+      font-size: var(--text-body-2-size);
+      line-height: 1.6;
+    }
+
+    .surface {
+      background: var(--muted);
+      border-radius: var(--radius);
+      padding: var(--space-3);
+    }
+
+    .amount {
+      font-size: var(--text-heading-1-size);
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: -0.03em;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      border: 0;
+      border-radius: var(--radius);
+      background: var(--primary);
+      color: var(--primary-foreground);
+      font-family: inherit;
+      font-size: var(--text-body-1-size);
+      font-weight: 600;
+      line-height: 1.6;
+      padding: 12px var(--space-3);
+      cursor: pointer;
+    }
+    .btn:hover {
+      background: color-mix(in oklch, var(--primary) 88%, var(--foreground));
+    }
+    .btn:active {
+      background: color-mix(in oklch, var(--primary) 76%, var(--foreground));
+    }
+    .btn-ghost {
+      background: var(--muted);
+      color: var(--foreground);
+    }
+    .btn-ghost:hover {
+      background: color-mix(in oklch, var(--muted) 88%, var(--foreground));
+    }
+
+    .stack-8 > * + * { margin-top: var(--space-2); }
+    .stack-16 > * + * { margin-top: var(--space-3); }
+    .stack-24 > * + * { margin-top: var(--space-4); }
+
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: var(--space-2);
+    }
+    .actions button {
+      border: 0;
+      background: var(--muted);
+      color: var(--foreground);
+      border-radius: var(--radius);
+      padding: var(--space-3) 0;
+      font-family: inherit;
+      font-size: var(--text-caption-size);
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .list-item {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-3);
+      padding: var(--space-3) 0;
+    }
+    .list-item + .list-item {
+      border-top: 1px solid var(--border);
+    }
+    .list-item .meta {
+      min-width: 0;
+      flex: 1;
+    }
+    .list-item .name {
+      font-size: var(--text-body-1-size);
+      font-weight: 600;
+      line-height: 1.6;
+    }
+    .clamp-3 {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .field {
+      display: block;
+      font-size: var(--text-caption-size);
+      color: var(--muted-foreground);
+      margin-bottom: var(--space-1);
+    }
+    input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--background);
+      color: var(--foreground);
+      font-family: inherit;
+      font-size: var(--text-body-1-size);
+      line-height: 1.6;
+      padding: 12px var(--space-3);
+      outline: none;
+    }
+    input[type="text"]:focus {
+      border-color: var(--ring);
+    }
+
+    .chips {
+      display: flex;
+      gap: var(--space-2);
+    }
+    .chips button {
+      flex: 1;
+      border: 1px solid var(--border);
+      background: var(--background);
+      color: var(--foreground);
+      border-radius: var(--radius);
+      padding: var(--space-2) 0;
+      font-family: inherit;
+      font-size: var(--text-caption-size);
+      font-weight: 600;
+    }
+
+    .tabbar {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      border-top: 1px solid var(--border);
+      background: var(--background);
+      flex-shrink: 0;
+    }
+    .tabbar span {
+      text-align: center;
+      padding: var(--space-3) 0;
+      font-size: var(--text-caption-size);
+      color: var(--muted-foreground);
+      line-height: 1.4;
+    }
+    .tabbar span.active {
+      color: var(--foreground);
+      font-weight: 700;
+    }
+
+    .primary-text { color: var(--primary); }
+    .minus { color: var(--foreground); font-weight: 600; }
+    .plus { color: var(--primary); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="page-bar">
+    <h1>B안 · 디자인 시스템 규칙</h1>
+    <p>60-30-10 · radius 8px · 간격 8px · Pretendard 3단계 · gutter 24px · 설명 3줄 말줄임</p>
+  </div>
+
+  <div class="phones">
+    <!-- 홈 -->
+    <div class="phone">
+      <div class="status"><span>9:41</span><span>홈</span></div>
+      <div class="screen stack-24">
+        <div>
+          <p class="caption">김해준님의 자산</p>
+          <p class="amount">4,820,000원</p>
+        </div>
+
+        <div class="actions">
+          <button type="button">계좌</button>
+          <button type="button">투자</button>
+          <button type="button">혜택</button>
+        </div>
+
+        <section class="stack-16">
+          <div class="label-row">
+            <h2>계좌</h2>
+            <span>2개</span>
+          </div>
+          <div class="surface stack-16">
+            <div class="row">
+              <div>
+                <p class="body" style="font-weight:600">입출금</p>
+                <p class="caption">1000-12-345678</p>
+              </div>
+              <p class="body" style="font-weight:600">1,240,000원</p>
+            </div>
+            <div class="row">
+              <div>
+                <p class="body" style="font-weight:600">적금</p>
+                <p class="caption">2000-98-765432</p>
+              </div>
+              <p class="body" style="font-weight:600">3,580,000원</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div class="label-row">
+            <h2>최근 내역</h2>
+            <span>전체</span>
+          </div>
+          <div class="list-item">
+            <div class="meta">
+              <p class="name">스타벅스 강남점</p>
+              <p class="caption">오늘 08:21</p>
+            </div>
+            <p class="minus">-4,500원</p>
+          </div>
+          <div class="list-item">
+            <div class="meta">
+              <p class="name">급여 입금</p>
+              <p class="caption">9월 5일</p>
+            </div>
+            <p class="plus">+2,800,000원</p>
+          </div>
+          <div class="list-item">
+            <div class="meta">
+              <p class="name">지하철 교통</p>
+              <p class="caption">9월 5일</p>
+            </div>
+            <p class="minus">-1,350원</p>
+          </div>
+        </section>
+
+        <button class="btn" type="button">보내기</button>
+      </div>
+      <nav class="tabbar">
+        <span class="active">홈</span>
+        <span>송금</span>
+        <span>내역</span>
+      </nav>
+    </div>
+
+    <!-- 송금 -->
+    <div class="phone">
+      <div class="status"><span>9:41</span><span>송금</span></div>
+      <div class="screen stack-24">
+        <div class="label-row">
+          <h2>보내기</h2>
+          <span>한도 확인</span>
+        </div>
+
+        <div>
+          <label class="field" for="to">받는 사람</label>
+          <input id="to" type="text" value="이영희" />
+        </div>
+
+        <div>
+          <label class="field" for="amt">금액</label>
+          <input id="amt" type="text" value="50,000원" />
+        </div>
+
+        <div class="chips">
+          <button type="button">+1만</button>
+          <button type="button">+5만</button>
+          <button type="button">전액</button>
+        </div>
+
+        <div class="surface">
+          <p class="caption clamp-3">
+            송금은 즉시 처리되며 취소가 어려울 수 있습니다. 받는 사람 이름과 금액을 한 번 더 확인해 주세요. 야간 수수료가 붙을 수 있고, 한도를 초과하면 다음 영업일에 처리됩니다.
+          </p>
+        </div>
+
+        <div class="stack-8">
+          <button class="btn" type="button">50,000원 보내기</button>
+          <button class="btn btn-ghost" type="button">취소</button>
+        </div>
+      </div>
+      <nav class="tabbar">
+        <span>홈</span>
+        <span class="active">송금</span>
+        <span>내역</span>
+      </nav>
+    </div>
+
+    <!-- 내역 -->
+    <div class="phone">
+      <div class="status"><span>9:41</span><span>내역</span></div>
+      <div class="screen">
+        <div class="label-row">
+          <h2>거래 내역</h2>
+          <span>2026.09 · 12건</span>
+        </div>
+
+        <div class="list-item">
+          <div class="meta">
+            <p class="name">스타벅스 강남점</p>
+            <p class="caption clamp-3">아이스 아메리카노와 케이크. 팀 미팅 후 결제. 영수증은 카드 앱에서 확인할 수 있습니다.</p>
+          </div>
+          <p class="minus">-4,500원</p>
+        </div>
+        <div class="list-item">
+          <div class="meta">
+            <p class="name">급여 입금</p>
+            <p class="caption clamp-3">9월 정기 급여. 원천징수 후 실수령액이 입금되었습니다. 명세서 별도 발송.</p>
+          </div>
+          <p class="plus">+2,800,000원</p>
+        </div>
+        <div class="list-item">
+          <div class="meta">
+            <p class="name">지하철 교통</p>
+            <p class="caption clamp-3">출근 구간 자동 결제. 후불 교통카드 한도 내에서 처리됨.</p>
+          </div>
+          <p class="minus">-1,350원</p>
+        </div>
+        <div class="list-item">
+          <div class="meta">
+            <p class="name">쿠팡</p>
+            <p class="caption clamp-3">생필품 정기 주문. 배송 예정일 안내 문자가 발송되었습니다.</p>
+          </div>
+          <p class="minus">-28,900원</p>
+        </div>
+      </div>
+      <nav class="tabbar">
+        <span>홈</span>
+        <span>송금</span>
+        <span class="active">내역</span>
+      </nav>
+    </div>
+  </div>
+</body>
+</html>

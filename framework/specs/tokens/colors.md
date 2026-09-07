@@ -6,11 +6,11 @@
 
 배경(60%) / 구분 영역(30%) / Primary 강조색(10%) 비율을 기준으로 색을 배분한다.
 
-| 비율 | 역할 | 예시 (토스 / 네이버 / 당근) |
-| --- | --- | --- |
-| 60% | 배경 (대부분 무채색) | 흰색/연회색 배경 |
-| 30% | 구분된 영역 (카드, 회색 영역) | 카드·섹션 배경 |
-| 10% | Primary — 브랜드 색, 강조용 | 토스 파랑 / 네이버 초록 / 당근 주황 |
+| 비율 | 역할 | 토큰 | 예시 (토스 / 네이버 / 당근) |
+| --- | --- | --- | --- |
+| 60% | 배경 (대부분 무채색) | `--background` | 흰색/연회색 배경 |
+| 30% | 구분된 영역 (카드, 회색 영역) | `--card` / `--muted` | 카드·섹션 배경 |
+| 10% | Primary — 브랜드 색, 강조용 | `--primary` | 토스 파랑 / 네이버 초록 / 당근 주황 |
 
 무채색이 대부분을 차지하는 이유: 무난하고 다른 색과 잘 어울리며 가독성이 좋기 때문. 보조색은 배경색에 가까울 수도, Primary색에 가까울 수도 있다.
 
@@ -20,9 +20,9 @@
 
 ## 3. 팔레트 생성 규칙
 
-- Primary 색을 기준으로 HSL의 **L(명도)** 값만 조정해서 단계별 팔레트를 생성한다.
+- Primary 색을 기준으로 **명도만** 조정해서 단계별 팔레트를 생성한다. `talk/script.md`는 HSL의 L을 쓰고, 이 프로젝트의 토큰 파일은 지각적으로 더 균일한 **oklch의 L**로 적는다. 둘 다 "색상각·채도는 고정, 명도만 이동"이다.
 - 이미 검증된 사이트의 팔레트를 참고해서 가져와도 무방하다.
-- 결과물은 Tailwind 설정 또는 CSS 커스텀 프로퍼티(디자인 토큰)로 저장한다.
+- 결과물은 §9 시맨틱 토큰(`--primary`, `--background` …)으로 저장한다. 단계 팔레트(10·20·…·100)는 시맨틱 토큰이 가리키는 primitive이지, 컴포넌트가 직접 쓰지 않는다.
 
 ## 4. 대비(Contrast) 규칙
 
@@ -33,63 +33,104 @@
 기본 상태에서 Hover, Pressed로 갈수록 팔레트 레벨을 일정 간격으로 올린다.
 
 ```
-기본(Default)  → Primary-50
-Hover          → Primary-60
-Pressed        → Primary-70
+기본(Default)  → --primary
+Hover          → --primary 의 oklch L을 한 단계 (라이트는 낮추고, 다크는 높인다)
+Pressed        → 한 단계 더
 ```
 
+시맨틱 토큰에 `--primary-hover`를 따로 두지 않는다. 컴포넌트에서 `color-mix(in oklch, var(--primary) 88%, var(--foreground))`처럼 같은 비율로 파생한다.
+
 주의사항:
-- 상태 전환 시 명암비가 **갑자기 반전**되거나 **너무 큰 폭**으로 뛰지 않도록 한다 (예: 50 → 90처럼 건너뛰지 않는다).
-- 레벨 간격은 프로젝트 전체에서 동일하게 유지한다 (예: 항상 +10).
+- 상태 전환 시 명암비가 **갑자기 반전**되거나 **너무 큰 폭**으로 뛰지 않도록 한다 (예: L을 0.2 이상 한 번에 움직이지 않는다).
+- 파생 비율은 프로젝트 전체에서 동일하게 유지한다.
 
 ## 6. 배경(Background) 레이어
 
-- 배경은 레이어 개념으로 관리한다. 기준 레이어를 `bg-0`으로 하고, 위로 2겹(`bg-1`, `bg-2`) 정도까지 사용하는 것을 권장.
-- 배경 팔레트는 Primary 팔레트와 분리해서 별도로 미리 정의해둔다. 보조 팔레트에서 가져다 써도 무방하다 — 반드시 하나의 팔레트만 사용해야 하는 것은 아니다.
+배경은 레이어 개념으로 관리한다. 이 프로젝트에서는 아래 시맨틱 토큰이 그 레이어다.
+
+| 레이어 | 토큰 | 역할 |
+| --- | --- | --- |
+| 0 | `--background` | 페이지 바탕 (60%) |
+| 1 | `--card` / `--secondary` / `--muted` | 구분된 면 (30%) |
+| 2 | `--popover` / `--sidebar` | 그 위에 뜨는 면 |
+
+배경·뉴트럴은 Primary와 분리한다. 기본 테마는 chroma 0(무채색)을 쓰고, 브랜드색은 `--primary`에만 넣는다.
 
 ## 7. 보조 팔레트
 
-Primary 외에 시스템 상태를 표현하는 보조 팔레트를 미리 정의해둔다.
+Primary 외에 시스템 상태를 표현하는 보조 팔레트를 미리 정의해둔다. 기본 세트는 아래 시맨틱 이름이다.
 
-| 팔레트 | 용도 |
-| --- | --- |
-| Primary | 브랜드/강조 |
-| Neutral (Gray) | 배경, 텍스트, 보더 |
-| Success | 성공/완료 상태 |
-| Warning | 경고 |
-| Danger/Error | 오류, 파괴적 액션 |
-| Info | 안내성 정보 |
+| 팔레트 | 시맨틱 토큰 | 용도 |
+| --- | --- | --- |
+| Primary | `--primary` / `--primary-foreground` | 브랜드/강조 |
+| Neutral | `--background` / `--foreground` / `--muted` / `--border` / `--input` / `--ring` | 배경, 텍스트, 보더 |
+| Danger/Error | `--destructive` | 오류, 파괴적 액션 |
+| Accent | `--accent` / `--accent-foreground` | 선택·하이라이트 (상태색 아님, §11) |
+| Chart | `--chart-1` … `--chart-5` | 데이터 시각화 |
+
+Success / Warning / Info는 기본 세트에 없다. 필요하면 같은 형식(`--success`, `--warning`, `--info` + `-foreground`)으로만 확장한다 — HEX를 컴포넌트에 직접 넣지 않는다.
 
 ## 8. 시스템 색상 → 컴포넌트 매핑
 
-시스템 색상(위 보조 팔레트)을 정의한 뒤, 각 컴포넌트가 어떤 팔레트/레벨을 쓸지 명시적으로 매핑한다 (예: `Button/Primary/Default = Primary-50`, `Alert/Danger/Background = Danger-10`).
+시스템 색상(위 보조 팔레트)을 정의한 뒤, 각 컴포넌트가 어떤 시맨틱 토큰을 쓸지 명시적으로 매핑한다 (예: `Button/Primary/Default = --primary`, `Alert/Danger/Background = --destructive`).
 
 ## 9. 토큰화
 
-위 내용을 종합하면 [shadcn/ui](https://ui.shadcn.com) 스타일처럼 색상을 시맨틱 토큰으로 표현할 수 있다.
+이 프로젝트의 색은 [shadcn/ui](https://ui.shadcn.com)와 같은 **시맨틱 이름 + oklch + `:root` / `.dark`** 로 적는다. 값은 [`examples/tokens/tokens.css`](../../../examples/tokens/tokens.css)가 기준이다. 브랜드 어댑터는 primitive만 바꾸고, 아래 이름은 바꾸지 않는다.
 
 ```css
---color-primary: var(--primary-50);
---color-primary-hover: var(--primary-60);
---color-primary-pressed: var(--primary-70);
---color-bg: var(--neutral-0);
---color-bg-layer-1: var(--neutral-2);
---color-bg-layer-2: var(--neutral-4);
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+}
+
+.dark {
+  /* 새 팔레트가 아니다. 같은 이름이 가리키는 명도만 역전한다 (§12). */
+}
 ```
+
+`--popover`, `--chart-1`…`--chart-5`, `--sidebar-*` 도 같은 계약에 포함된다. 전체 목록은 `tokens.css`를 따른다.
+
+기본 테마는 **chroma 0**(무채색)이다. §1대로 면적의 대부분을 뉴트럴이 차지하고, 브랜드색은 `--primary`(그리고 필요 시 `--sidebar-primary`)의 chroma만 올린다.
 
 ## 10. (심화) 투명도 단계
 
 세밀하게 관리하고 싶다면 투명도를 5단계 정도로 나누고, 배경색별 조합까지 미리 정의한다 (예: `black/4%, 8%, 16%, 32%, 64%`, 배경이 밝을 때/어두울 때 각각).
 
-## 11. 참고 — 액센트 팔레트 영감
+## 11. 액센트 팔레트 — 톤 관계
 
-브랜드 Primary 외에 보조·강조 팔레트의 톤을 잡을 때 참고할 수 있는 2색 조합 모음은 [`references/articles/color-combinations-16.md`](../../../references/articles/color-combinations-16.md) 참고.
+> 출처: `talk/script.md`에는 없는 내용. 2색 무드 조합을 [`references/articles/color-combinations-16.md`](../../../references/articles/color-combinations-16.md)에서 정리하다 반복되는 규칙을 승격했다. HEX·페어 목록은 스펙에 고정하지 않고 참고 문서에 둔다.
+
+§7의 보조 팔레트(Success / Warning / Danger / Info)는 **시스템 상태**를 위한 것이다. 브랜드 Primary(§2) 외에 화면의 무드·강조를 맡기는 색은 그와 역할을 나누어, **액센트 한 쌍**으로 따로 고른다. 액센트는 §1의 10% 영역을 넘기지 않는다.
+
+색상환에서 보색·유사색을 고르는 것만으로는 부족하다. 먼저 **톤(명도·채도)** 관계를 정한다.
+
+- 두 색의 톤을 맞춰두면 완전한 보색이라도 충돌하지 않고 눌러진다 (죽은 톤 보색).
+- 톤 차이를 극단적으로 벌리면 위계가 분명해지고 인상이 명쾌해진다.
+- 유사색(인접색)에 톤까지 맞추면 경계가 자연스럽게 이어진다.
+- 한 색의 명도/채도만 바꾼 톤온톤은 일상적이고 안정적인 인상을 준다.
+
+액센트를 골랐으면 §3과 같이 oklch L만 조정해 단계를 만들고 `--accent`에 올린 뒤, §4 대비율을 통과한 다음에 컴포넌트에 매핑한다. `--destructive`나 확장 상태색과 값을 공유하지 않는다.
 
 ## 12. (심화) 고대비/다크 모드
 
 > 출처: `talk/script.md`에는 없는 내용. KRDS 스타일 가이드(`style_09.html`, "선명한 화면 모드") 학습 과정에서 발견한 원칙으로, 여러 디자인 시스템에 공통되는 개념이라 승격했다. 실제 값은 [`framework/adapters/krds/colors.md`](../../adapters/krds/colors.md) §10 참고.
 
-핵심 원칙: **고대비/다크 모드는 별도의 새 팔레트가 아니다.** §3에서 만든 팔레트(레벨 0~100)는 그대로 두고, 시맨틱 역할(텍스트/배경/보더 등)이 **어느 레벨을 가리키는지만 재배정**하면 된다.
+핵심 원칙: **고대비/다크 모드는 별도의 새 팔레트가 아니다.** §3에서 만든 팔레트는 그대로 두고, 시맨틱 역할이 **어느 값을 가리키는지만 재배정**하면 된다. 이 프로젝트에서는 그 재배정이 `.dark { --background: …; --foreground: …; }` 블록이다.
 
 - 목표 대비를 라이트 모드보다 한 단계씩 끌어올린다 (예: 본문 텍스트 4.5:1 → 7:1 이상, 헤딩/레이블 3:1 → 4.5:1 이상).
 - 배경이 어두워지므로 텍스트/아이콘은 팔레트의 **높은 레벨**(밝은 쪽)을, 배경은 **낮은 레벨**(어두운 쪽)을 가리키도록 역전시킨다 — 라이트 모드에서 텍스트가 90, 배경이 0을 가리켰다면 다크 모드에서는 텍스트가 20, 배경이 95를 가리키는 식.

@@ -14,6 +14,7 @@
 - [x] patterns: media (이미지·모달·텍스트 말줄임 전부 포함 — 이전 항목 "그 외 patterns 미착수"는 착오였음, 삭제)
 - [x] components 스펙 신설 — `components/component-contract.md` (Variant × Size × State → Token 계약)
 - [x] validation 스펙 신설 — `validation/accessibility-checklist.md`
+- [x] pipeline 스펙 신설 — `pipeline.md` (슬라이드 30 "종합" 개념 — 규칙→어댑터→토큰 파일→프레임워크 설정→AI 컨텍스트 5단계). 실제 산출물: `examples/tokens/{tokens.css,tailwind.config.js}`, `examples/design-rules.md`(슬라이드 31 대응, 브랜드 중립 빈 템플릿)
 - [ ] patterns 그 외 항목 확장 (media 외에 navigation/form 같은 패턴 추가 여부 검토)
 
 ## 3. 범용 프레임워크 — 어댑터 (`framework/adapters/`)

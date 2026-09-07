@@ -38,6 +38,8 @@
 ## 공통 스펙에 없는 이 시스템 고유 항목
 
 ## 토큰화 예시 (공통 스펙 형식에 실제 값을 대입한 코드 블록)
+
+색은 `prompts/framework/color-tokens.md` 계약으로 옮긴다 — `:root` / `.dark`, oklch, `--primary` 등 시맨틱 이름. `--color-primary` / `primary-50`을 public API로 쓰지 않는다.
 ```
 
 ## 참고 소스

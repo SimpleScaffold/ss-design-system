@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>A안 · 규칙 없이 만든 화면</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600;800&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #1a1333;
+      color: #fff;
+      font-family: "Roboto", sans-serif;
+    }
+    .page-bar {
+      padding: 18px 28px 10px;
+    }
+    .page-bar h1 {
+      margin: 0;
+      font-family: "Pacifico", cursive;
+      font-size: 26px;
+      font-weight: 400;
+      color: #ffd166;
+    }
+    .page-bar p {
+      margin: 6px 0 0;
+      font-size: 13px;
+      opacity: 0.72;
+    }
+    .phones {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+      justify-content: center;
+      padding: 16px 22px 40px;
+    }
+    .phone {
+      width: 390px;
+      height: 844px;
+      border-radius: 36px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+    }
+    .label {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(0, 0, 0, 0.45);
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    /* ===== 홈: 그라데이션 + Primary 남용 ===== */
+    .home {
+      height: 100%;
+      background: linear-gradient(160deg, #4f46e5 0%, #3182F6 42%, #22d3ee 100%);
+      font-family: "Poppins", sans-serif;
+      padding: 48px 13px 18px;
+      overflow: auto;
+    }
+    .home .hi {
+      font-size: 13px;
+      color: #c7d2fe;
+      margin-bottom: 7px;
+    }
+    .home h2 {
+      margin: 0 0 18px;
+      font-size: 31px;
+      font-weight: 800;
+    }
+    .home .hero {
+      background: linear-gradient(135deg, #1e3a8a, #7c3aed);
+      border-radius: 28px;
+      padding: 22px 18px;
+      box-shadow: 0 12px 28px rgba(49, 130, 246, 0.55);
+      margin-bottom: 13px;
+    }
+    .home .hero small { opacity: 0.7; font-size: 12px; }
+    .home .hero .won {
+      font-size: 38px;
+      font-weight: 800;
+      margin: 4px 0 14px;
+    }
+    .home .hero button {
+      width: 100%;
+      border: 0;
+      background: #22d3ee;
+      color: #083344;
+      font-weight: 700;
+      padding: 11px;
+      border-radius: 50px;
+      font-size: 15px;
+    }
+    .home .quick {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 7px;
+      margin: 13px 0 18px;
+    }
+    .home .quick div {
+      background: rgba(255, 255, 255, 0.22);
+      text-align: center;
+      padding: 14px 4px;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+    .home .card {
+      background: #fff;
+      color: #1e1b4b;
+      border-radius: 4px;
+      padding: 16px 14px;
+    }
+    .home .card h3 {
+      margin: 0 0 10px;
+      font-size: 17px;
+      color: #7c3aed;
+    }
+    .home .row {
+      display: flex;
+      justify-content: space-between;
+      padding: 9px 0;
+      border-bottom: 1px dashed #ddd;
+      font-size: 13px;
+    }
+    .home .row:last-child { border-bottom: 0; }
+    .home .row .minus { color: #ef4444; font-weight: 700; }
+    .home .row .plus { color: #10b981; font-weight: 700; }
+
+    /* ===== 송금: 다른 폰트·다른 radius·임의 간격 ===== */
+    .send {
+      height: 100%;
+      background: #f3e8ff;
+      color: #3b0764;
+      font-family: "Roboto", sans-serif;
+      padding: 52px 22px 20px;
+      overflow: auto;
+    }
+    .send h2 {
+      font-family: "Pacifico", cursive;
+      font-size: 28px;
+      margin: 0 0 8px;
+      color: #7e22ce;
+    }
+    .send .sub { font-size: 12px; margin-bottom: 22px; color: #6b21a8; }
+    .send label {
+      display: block;
+      font-size: 11px;
+      margin-bottom: 5px;
+      letter-spacing: 0.04em;
+    }
+    .send input {
+      width: 100%;
+      border: 2px solid #c084fc;
+      border-radius: 2px;
+      padding: 13px;
+      font-size: 16px;
+      margin-bottom: 17px;
+      background: #fff;
+    }
+    .send .amount {
+      font-size: 34px;
+      font-weight: 300;
+      border: 0;
+      border-bottom: 3px solid #3182F6;
+      border-radius: 0;
+      padding: 8px 0;
+      margin-bottom: 11px;
+      background: transparent;
+    }
+    .send .chips { display: flex; gap: 6px; margin-bottom: 19px; flex-wrap: wrap; }
+    .send .chips span {
+      background: #3182F6;
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 18px;
+      font-size: 12px;
+    }
+    .send .notice {
+      background: #fef3c7;
+      color: #92400e;
+      padding: 15px;
+      border-radius: 20px;
+      font-size: 13px;
+      line-height: 1.45;
+      margin-bottom: 28px;
+    }
+    .send button {
+      width: 70%;
+      margin-left: 15%;
+      border: 0;
+      background: linear-gradient(90deg, #f97316, #ef4444);
+      color: #fff;
+      padding: 16px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 700;
+      box-shadow: 0 8px 0 #9a3412;
+    }
+
+    /* ===== 내역: 또 다른 톤·카드마다 radius 다름 ===== */
+    .history {
+      height: 100%;
+      background: #0f172a;
+      color: #e2e8f0;
+      font-family: Georgia, serif;
+      padding: 50px 16px 20px;
+      overflow: auto;
+    }
+    .history h2 {
+      margin: 0 0 4px;
+      font-size: 22px;
+      color: #38bdf8;
+    }
+    .history .month {
+      font-family: "Poppins", sans-serif;
+      font-size: 12px;
+      color: #94a3b8;
+      margin-bottom: 14px;
+    }
+    .history .item {
+      margin-bottom: 11px;
+      padding: 13px;
+    }
+    .history .item:nth-child(odd) {
+      background: #1e293b;
+      border-radius: 3px;
+    }
+    .history .item:nth-child(even) {
+      background: #312e81;
+      border-radius: 24px;
+    }
+    .history .item .top {
+      display: flex;
+      justify-content: space-between;
+      font-size: 15px;
+    }
+    .history .item .desc {
+      margin-top: 6px;
+      font-size: 12px;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+    .history .fab {
+      position: absolute;
+      right: 18px;
+      bottom: 22px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      border: 0;
+      background: #f43f5e;
+      color: #fff;
+      font-size: 28px;
+      box-shadow: 0 8px 20px rgba(244, 63, 94, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="page-bar">
+    <h1>A안 · 규칙 없이</h1>
+    <p>“토스 스타일의 모바일 금융 앱 화면을 디자인해줘.” — 색 비율·Radius·간격이 화면마다 제각각</p>
+  </div>
+
+  <div class="phones">
+    <div class="phone">
+      <div class="label">홈</div>
+      <div class="home">
+        <div class="hi">Good morning ☀️ 김해준</div>
+        <h2>My Wallet</h2>
+        <div class="hero">
+          <small>Total Balance</small>
+          <div class="won">₩4,820,000</div>
+          <button>지금 송금하기 🚀</button>
+        </div>
+        <div class="quick">
+          <div>💳<br />카드</div>
+          <div>📈<br />투자</div>
+          <div>🎁<br />혜택</div>
+        </div>
+        <div class="card">
+          <h3>Recent Activity</h3>
+          <div class="row"><span>스타벅스 강남점</span><span class="minus">-4,500</span></div>
+          <div class="row"><span>급여 입금</span><span class="plus">+2,800,000</span></div>
+          <div class="row"><span>지하철 교통</span><span class="minus">-1,350</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phone">
+      <div class="label">송금</div>
+      <div class="send">
+        <h2>Send Money</h2>
+        <div class="sub">누구에게 보낼까요?</div>
+        <label>받는 사람</label>
+        <input value="이영희" />
+        <label>금액</label>
+        <input class="amount" value="50,000" />
+        <div class="chips">
+          <span>+1만</span>
+          <span>+5만</span>
+          <span>전액</span>
+        </div>
+        <div class="notice">
+          송금은 즉시 처리되며 취소가 어려울 수 있습니다. 받는 사람 이름과 금액을 한 번 더 확인해 주세요. 야간 수수료가 붙을 수 있고, 한도를 초과하면 다음 영업일에 처리됩니다.
+        </div>
+        <button>보내기</button>
+      </div>
+    </div>
+
+    <div class="phone">
+      <div class="label">내역</div>
+      <div class="history">
+        <h2>거래 내역</h2>
+        <div class="month">2026.09 · 12건</div>
+        <div class="item">
+          <div class="top"><span>스타벅스 강남점</span><span>-4,500</span></div>
+          <div class="desc">아이스 아메리카노와 케이크. 팀 미팅 후 결제. 영수증은 카드 앱에서 확인할 수 있습니다.</div>
+        </div>
+        <div class="item">
+          <div class="top"><span>급여 입금</span><span>+2,800,000</span></div>
+          <div class="desc">9월 정기 급여. 원천징수 후 실수령액이 입금되었습니다. 명세서 별도 발송.</div>
+        </div>
+        <div class="item">
+          <div class="top"><span>지하철 교통</span><span>-1,350</span></div>
+          <div class="desc">출근 구간 자동 결제. 후불 교통카드 한도 내에서 처리됨.</div>
+        </div>
+        <div class="item">
+          <div class="top"><span>쿠팡</span><span>-28,900</span></div>
+          <div class="desc">생필품 정기 주문. 배송 예정일 안내 문자가 발송되었습니다.</div>
+        </div>
+        <button class="fab">+</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

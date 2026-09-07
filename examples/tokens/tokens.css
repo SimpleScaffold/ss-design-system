@@ -1,0 +1,130 @@
+/**
+ * framework/specs/pipeline.md 3단계 예시.
+ * 색은 framework/specs/tokens/colors.md §9 계약 — shadcn/ui 시맨틱 이름 + oklch.
+ * 뉴트럴은 chroma 0이 기본. 브랜드 Primary는 --primary(와 필요 시 --sidebar-primary)만 덮어쓴다.
+ * radius/spacing/typography/elevation/layout 값은 예시이며, 실제 프로젝트는
+ * framework/skills/plan.md 절차로 자기 값을 채운다.
+ */
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+
+  /* radius.md — 시맨틱 이름 --radius 를 기준값으로 쓴다 */
+  --radius-base: var(--radius);
+
+  /* ===== Spacing — spacing.md §기본 단위 (8px 기준, 4px 예외) ===== */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 40px;
+  --space-7: 48px;
+
+  /* ===== Typography — typography.md §토큰화 ===== */
+  --font-family-base: 'Pretendard', system-ui, sans-serif;
+  --text-heading-1-size: 2.8rem;
+  --text-heading-1-weight: 700;
+  --text-heading-1-line-height: 1.4;
+  --text-heading-2-size: 2.2rem;
+  --text-heading-2-weight: 700;
+  --text-heading-2-line-height: 1.4;
+  --text-body-1-size: 1.6rem;
+  --text-body-1-weight: 400;
+  --text-body-1-line-height: 1.6;
+  --text-body-2-size: 1.4rem;
+  --text-body-2-weight: 400;
+  --text-body-2-line-height: 1.6;
+  --text-caption-size: 1.2rem;
+  --text-caption-weight: 400;
+  --text-caption-line-height: 1.4;
+
+  /* ===== Elevation — elevation.md §3 (최소 단계로 시작: base/raised/overlay) ===== */
+  --elevation-0: none;
+  --elevation-1: 0 1px 2px oklch(0.145 0 0 / 8%);
+  --elevation-2: 0 4px 8px oklch(0.145 0 0 / 12%);
+
+  /* ===== Layout — layout.md (최대 너비, Gutter) ===== */
+  --layout-max-width: 1280px;
+  --layout-gutter: 24px;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+/* typography.md §rem 기준값 — 루트 기본값을 16 대신 10으로 */
+html {
+  font-size: 62.5%;
+}
+
+/*
+ * colors.md §12 — .dark 가 시맨틱 재배정이다.
+ * 시스템 다크 모드만으로도 같게 동작하게 하려면 html에 .dark 를 붙인다.
+ */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+  }
+}

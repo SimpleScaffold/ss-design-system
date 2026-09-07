@@ -22,8 +22,8 @@
 
 - **Default** — 아무 상호작용도 없는 기본 상태.
 - **Hover** — 포인터가 올라간 상태 (터치 전용 기기에는 해당 없음, 생략 가능).
-- **Pressed** — 누르고 있는 상태. `tokens/colors.md` §5의 상태 색상 규칙(50→60→70)을 그대로 따른다.
-- **Disabled** — 상호작용 불가. 색상은 보통 Neutral 팔레트로 대체하고, 커서도 `not-allowed`로 바꾼다.
+- **Pressed** — 누르고 있는 상태. `tokens/colors.md` §5의 상태 색상 규칙(`--primary`의 oklch L을 한 단계씩)을 그대로 따른다.
+- **Disabled** — 상호작용 불가. 색상은 보통 `--muted` / `--muted-foreground`로 대체하고, 커서도 `not-allowed`로 바꾼다.
 - **Focus-visible** — 키보드 포커스. 색상만으로 표시하지 않고 outline/ring 같은 비색상 단서를 반드시 함께 준다 (`validation/accessibility-checklist.md` §4).
 - **Loading** — 비동기 처리 중. 텍스트는 유지하거나 스피너로 교체하되 컴포넌트 크기는 유지한다(레이아웃 밀림 방지).
 
@@ -32,15 +32,15 @@
 ```
 Button
 ├─ Variant: Primary
-│   ├─ Default   → bg: --color-primary        / text: --color-on-primary
-│   ├─ Hover      → bg: --color-primary-hover
-│   ├─ Pressed    → bg: --color-primary-pressed
-│   ├─ Disabled   → bg: --color-neutral-20     / text: --color-neutral-50
-│   └─ Focus      → ring: --color-primary, ring-width: 2
+│   ├─ Default   → bg: --primary        / text: --primary-foreground
+│   ├─ Hover      → bg: color-mix(in oklch, var(--primary) 88%, var(--foreground))
+│   ├─ Pressed    → bg: color-mix(in oklch, var(--primary) 76%, var(--foreground))
+│   ├─ Disabled   → bg: --muted         / text: --muted-foreground
+│   └─ Focus      → ring: --ring, ring-width: 2
 ├─ Variant: Danger
-│   └─ (Primary과 동일 패턴, 팔레트만 --color-danger-* 로 교체)
+│   └─ (Primary과 동일 패턴, 팔레트만 --destructive 로 교체)
 └─ 공통 (Variant 무관)
-    ├─ radius     → --radius-base   (radius.md — 값 하나로 통일)
+    ├─ radius     → --radius   (colors.md §9 / radius.md — 값 하나로 통일)
     ├─ padding    → --space-3 --space-4  (spacing.md 8px 단위)
     └─ typography → --font-label    (typography.md)
 ```
@@ -60,13 +60,13 @@ Variant를 늘릴 때마다 State 규칙 전체를 새로 쓰지 않고, "공통
 ```css
 /* Button/Primary */
 .btn-primary {
-  background: var(--color-primary);
-  color: var(--color-on-primary);
-  border-radius: var(--radius-base);
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius);
   padding: var(--space-3) var(--space-4);
 }
-.btn-primary:hover { background: var(--color-primary-hover); }
-.btn-primary:active { background: var(--color-primary-pressed); }
-.btn-primary:disabled { background: var(--color-neutral-20); color: var(--color-neutral-50); }
-.btn-primary:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+.btn-primary:hover { background: color-mix(in oklch, var(--primary) 88%, var(--foreground)); }
+.btn-primary:active { background: color-mix(in oklch, var(--primary) 76%, var(--foreground)); }
+.btn-primary:disabled { background: var(--muted); color: var(--muted-foreground); }
+.btn-primary:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
 ```

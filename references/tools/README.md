@@ -1,19 +1,15 @@
 # tools
 
-관련 오픈소스/도구 조사 (디자인 토큰 변환기, 린터, MCP 서버 등).
+발표·예시·에이전트 작업에 쓸 **외부 오픈소스/웹 도구 조사**.
+실행 스크립트는 [`tools/`](../../tools/)(image-gen, screenshot 등), 프레임워크 검증은 [`framework/scripts/`](../../framework/scripts/)에 둔다.
 
-## React Bits
+용도별로 나눠 둔다. 도구를 추가할 때는 아래 해당 폴더 README에 출처·용도·라이선스를 적는다.
 
-- 사이트: [reactbits.dev](https://reactbits.dev/get-started/introduction) · Repo: [DavidHDev/react-bits](https://github.com/DavidHDev/react-bits)
-- **용도: 실제 컴포넌트 소스 코드가 필요한 경우 여기서 가져다 쓴다.** (텍스트 애니메이션, 배경, UI 컴포넌트 등 165개 이상)
-- 특징: 컴포넌트당 **4개 변형**(JS-CSS / JS-TW / TS-CSS / TS-TW)을 제공해서 스택에 맞게 그대로 복사-붙여넣기 가능. 의존성이 가볍고 tree-shakeable.
-- 설치 방법:
-  ```bash
-  # shadcn CLI로 개별 컴포넌트 추가
-  npx shadcn@latest add @react-bits/BlurText-TS-TW
-  ```
-  또는 jsrepo CLI 사용 가능. 각 컴포넌트 문서 페이지에 복사용 CLI 명령이 포함되어 있음 — 직접 코드만 복사해도 됨.
-- 추가 도구: Background Studio(애니메이션 배경 커스터마이즈/내보내기), Shape Magic(둥근 모서리 도형 → SVG/코드), Texture Lab(노이즈/디더링/ASCII 등 이미지·영상 효과) — [reactbits.dev/tools](https://reactbits.dev/tools)
-- 라이선스: MIT + Commons Clause (개인/상업적 사용 무료)
-- 다른 프레임워크 포트: [Vue Bits](https://vue-bits.dev/), [Svelte Bits](https://sveltebits.xyz/)
-- 관련: [`Leonxlnx/taste-skill`](https://github.com/Leonxlnx/taste-skill)의 실버 스폰서로도 언급됨 (`references/ai-agent-workflows/README.md` 참고) — 애니메이션이 필요한 프론트엔드 결과물에서 자주 짝을 이루는 조합.
+| 폴더 | 모으는 것 |
+| --- | --- |
+| [`charts/`](./charts/) | 차트·데이터 시각화 라이브러리/생성기 |
+| [`image-gen/`](./image-gen/) | 이미지·텍스처·배경 생성에 도움이 되는 도구 |
+| [`shapes/`](./shapes/) | 도형·SVG 생성기 |
+| [`ui-kits/`](./ui-kits/) | 복사해 쓰는 UI 컴포넌트 킷 (애니메이션, 배경 컴포넌트 등) |
+
+토큰 변환기·린터·MCP처럼 위 분류에 안 들어가는 조사는, 항목이 쌓이면 폴더를 새로 만들고 이 표에 한 줄 추가한다. MCP·AI 디자인 생성 도구는 이미 [`../ai-agent-workflows/`](../ai-agent-workflows/)에 있다.

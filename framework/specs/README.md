@@ -10,3 +10,5 @@
 | [`validation/`](./validation/) | 위 스펙들을 실제로 지켰는지 확인하는 체크리스트 | 1차 작성 완료 |
 
 `components`/`validation`은 토큰 자체가 아니라 "토큰을 어떻게 쓰고, 어떻게 확인하는지"를 다루므로 어댑터(`framework/adapters/*`)가 값을 채우는 대상이 아니다 — 프로젝트마다 실제 컴포넌트 목록과 검증 도구를 이 스펙에 맞춰 만든다.
+
+[`pipeline.md`](./pipeline.md)는 위 스펙들이 실제로 어떻게 코드·AI 컨텍스트까지 이어지는지(공통 스펙 → 어댑터 → 토큰 파일 → 프레임워크 설정 → AI 컨텍스트) 정의한다 — 실제 산출물 예시는 [`examples/tokens/`](../../examples/tokens/), [`examples/design-rules.md`](../../examples/design-rules.md) 참고.

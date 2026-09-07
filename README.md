@@ -35,7 +35,11 @@ ss-design-system/
 │   ├── ai-agent-workflows/       AI 에이전트 × 디자인시스템 관련 사례/논문
 │   ├── conference-talks/         관련 기존 발표 요약·인용
 │   ├── articles/                 아티클/블로그 스크랩
-│   └── tools/                    관련 오픈소스·도구 조사
+│   └── tools/                    관련 오픈소스·도구 조사 (차트 / 이미지 생성 / 도형 / UI 킷)
+│       ├── charts/
+│       ├── image-gen/
+│       ├── shapes/
+│       └── ui-kits/
 ├── design-examples/             디자인 예시 — 시스템별 UI 스크린샷·목업 (발표 시각자료 원본)
 │   ├── krds/
 │   ├── material-design/
@@ -44,7 +48,7 @@ ss-design-system/
 │   ├── fluent/
 │   └── apple-hig/
 ├── prompts/                     프롬프트 모음
-│   ├── framework/                framework/skills 개발·튜닝용 프롬프트
+│   ├── framework/                framework/skills 개발·튜닝용 프롬프트 (색 토큰은 color-tokens.md)
 │   ├── research/                 참고자료 수집·요약용 프롬프트
 │   └── demo/                     발표 라이브 데모용 프롬프트
 ├── tools/                       자료 제작용 유틸리티 도구 (이미지 생성, 스크린샷 자동화 등)
