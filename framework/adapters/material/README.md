@@ -11,6 +11,7 @@ Google Material Design 3 어댑터. 공통 스펙(`framework/specs/tokens/*.md`)
 | `specs/tokens/radius.md` | [`radius.md`](./radius.md) |
 | `specs/tokens/layout.md`, `specs/tokens/spacing.md` | [`layout.md`](./layout.md) |
 | `specs/tokens/icon.md` | [`icon.md`](./icon.md) |
+| `specs/tokens/elevation.md` | [`elevation.md`](./elevation.md) |
 
 ## 참고 소스
 

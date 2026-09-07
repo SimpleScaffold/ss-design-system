@@ -18,8 +18,10 @@
 | `specs/tokens/radius.md` | `radius.md` |
 | `specs/tokens/layout.md`, `specs/tokens/spacing.md` | `layout.md` |
 | `specs/tokens/icon.md` | `icon.md` |
+| `specs/tokens/elevation.md` | `elevation.md` (해당 시스템에 개념이 없으면 "없음 + 이유"만 명시, 파일 자체를 생략해도 됨 — krds만 작성되어 있고 material/ant-design은 아직 없음) |
+| `specs/patterns/media.md` | 대응 매핑 문서 없음 (2026-09 기준 세 어댑터 모두 미착수) |
 
-> `components`/`validation` 공통 스펙은 아직 정의되지 않아 대응 매핑도 없다 (2026-08-24 기준, 다른 어댑터도 동일).
+> `specs/components/`, `specs/validation/`은 시스템별 값이 아니라 "토큰을 어떻게 쓰고 확인하는지"의 계약이라 어댑터가 값을 채우는 대상이 아니다(`framework/specs/README.md` 참고) — 매핑 문서를 만들 필요가 없다.
 
 ## 매핑 문서 하나의 기본 구조 (권장)
 

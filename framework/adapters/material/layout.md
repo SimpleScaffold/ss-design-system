@@ -21,15 +21,9 @@
 | Medium | 600~840dp (태블릿/폴더블) |
 | Expanded | 840dp 이상 (데스크톱) |
 
-## 간격의 대체 개념 → Elevation (배경 레이어의 Material식 구현)
+## Elevation은 별도 문서로 분리됨
 
-공통 스펙 6항 "배경 레이어(bg-0/bg-1/bg-2)"와 KRDS의 elevation 개념에 대응하는 Material의 실제 값(`_md-sys-elevation.scss`, dp 단위 그림자):
-
-```
-level0: 0dp   level1: 1dp   level2: 3dp   level3: 6dp   level4: 8dp   level5: 12dp
-```
-
-KRDS가 배경색을 바꿔서 레이어를 표현하는 반면(`gray0 ↔ gray5` 번갈아 사용), Material은 **그림자(shadow) + 표면 틴트(surface tint overlay)** 로 레이어를 표현한다 — 같은 목적, 완전히 다른 구현 방식의 사례.
+배경 레이어(공통 스펙 6항)에 대응하는 Material의 실제 구현(그림자 dp 값, 표면 틴트 오버레이)은 [`elevation.md`](./elevation.md) 참고 — spacing/layout이 아니라 독립된 공통 스펙(`specs/tokens/elevation.md`) 항목이라 이 문서에서 분리했다.
 
 ## 8dp 그리드는 컨벤션으로 살아있음
 
