@@ -22,6 +22,7 @@
 - [x] `material/` — colors/typography/radius/layout/icon 매핑 완료 (material-color-utilities + material-web 토큰 소스 코드 기반)
 - [x] `ant-design/` — colors/typography/radius/layout/icon 매핑 완료 (antd v5 theme seed/algorithm 소스 코드 기반)
 - [x] `_template/` — 신규 어댑터 작성 가이드(사용법, 문서 구조, 체크사항) 작성 완료
+- [x] `shadcn/` — 공통 스펙 §9가 원본으로 채택한 shadcn/ui 공식 계약을 소스(ui.shadcn.com/docs/theming) 기준으로 정리(colors/radius). typography/layout/icon/elevation은 "없음"으로 명시(Tailwind 기본값에 위임)
 
 ## 4. 범용 프레임워크 — skills (`framework/skills/`)
 - [x] `plan` 스킬 설계 — `framework/skills/plan.md`
@@ -47,6 +48,9 @@
 
 ## 7. 디자인 예시 (`design-examples/`)
 - [ ] 시스템별 스크린샷·목업 수집 상태 점검 (krds / material-design / ant-design / carbon / fluent / apple-hig)
+
+## 7-1. shadcn 실무 사례 (`examples/shadcn-case/`)
+- [x] 실제 프로덕션 모노레포(shadcn/ui 기반 디자인 시스템 운영 사례)를 조사해 익명화·일반화한 6개 문서 작성 완료 — 3-tier 토큰 아키텍처(`token-architecture.md`), 멀티 브랜드 스킨 + Radix 12-step 팔레트(`multi-skin-tokens.md`), cva/cn() 컨벤션 + 타입 레벨 강제(`component-conventions.md`), 8px 공통 스펙과 다른 4px 그리드(`spacing-grid.md`), 규칙 문서화와 실제 준수의 간극(`gaps-and-lessons.md`)
 
 ## 8. 프롬프트 & 도구 (`prompts/`, `tools/`)
 - [x] `prompts/framework/` — spec-authoring, skill-design 메타 프롬프트 작성
