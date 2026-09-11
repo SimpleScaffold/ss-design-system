@@ -1,6 +1,6 @@
 # 색 — 고정 규칙
 
-> 출처: [`framework/specs/tokens/colors.md`](../../../../framework/specs/tokens/colors.md), [`framework/specs/tokens/elevation.md`](../../../../framework/specs/tokens/elevation.md) §1(배경 레이어와 같은 개념), [`prompts/framework/color-tokens.md`](../../../../prompts/framework/color-tokens.md). 값이 아니라 규칙만 담는다 — 실제 값은 [`../변동/colors.md`](../변동/colors.md). 팔레트를 고를 사이트는 [`../추천사이트.md`](../추천사이트.md).
+> 출처: [`framework/specs/tokens/colors.md`](../../../../framework/specs/tokens/colors.md), [`framework/specs/tokens/elevation.md`](../../../../framework/specs/tokens/elevation.md) §1(배경 레이어와 같은 개념), [`prompts/framework/color-tokens.md`](../../../../prompts/framework/color-tokens.md). 값이 아니라 규칙만 담는다 — 실제 값은 [`../변동/colors.md`](../변동/colors.md). 팔레트를 고를 사이트는 [`references/tools/design-sites/`](../../../../../references/tools/design-sites/README.md).
 
 1. **면적 비율은 60 / 30 / 10.** 배경(`--background`) 60%, 구분 영역(`--card`·`--muted`) 30%, Primary 강조 10%.
 2. **팔레트는 primitive → semantic 2단계로 만든다.** primitive는 색상각·채도를 고정하고 명도만 이동한 단계 팔레트, semantic은 그 primitive를 가리키기만 한다(`--primary: var(--color-primary-50)`). 컴포넌트는 semantic 이름만 참조하고 primitive를 직접 쓰지 않는다(`examples/shadcn-case/token-architecture.md` "컴포넌트는 원시 값을 절대 보지 않는다").

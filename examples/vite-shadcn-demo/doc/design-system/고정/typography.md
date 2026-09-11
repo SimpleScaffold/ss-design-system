@@ -1,6 +1,6 @@
 # 타이포그래피 — 고정 규칙
 
-> 출처: [`framework/specs/tokens/typography.md`](../../../../framework/specs/tokens/typography.md). 폰트 후보 사이트는 [`../추천사이트.md`](../추천사이트.md).
+> 출처: [`framework/specs/tokens/typography.md`](../../../../framework/specs/tokens/typography.md). 폰트 후보 사이트는 [`references/tools/design-sites/`](../../../../../references/tools/design-sites/README.md).
 
 1. **지원 언어를 모두 지원하는 폰트 하나만 쓴다.** 언어별로 폰트를 나누면 언어마다 크기·행간을 다시 맞춰야 한다.
 2. **크기/굵기/줄간격을 사전에 팔레트로 정의한다.** 모든 텍스트는 이 팔레트(Heading/Body/Caption 같은 티어)를 참조하고, 그때그때 임의의 px 값을 쓰지 않는다.

@@ -1,6 +1,6 @@
 # 아이콘 — 이 프로젝트가 채운 값
 
-> 규칙: [`../고정/icon.md`](../고정/icon.md) · 실제 코드: [`../../src/App.tsx`](../../src/App.tsx) · 참고 사이트: [`../추천사이트.md`](../추천사이트.md)
+> 규칙: [`../고정/icon.md`](../고정/icon.md) · 실제 코드: [`../../src/App.tsx`](../../src/App.tsx) · 참고 사이트: [`references/tools/design-sites/`](../../../../../references/tools/design-sites/README.md)
 
 ## 라이브러리
 

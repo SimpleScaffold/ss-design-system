@@ -35,11 +35,12 @@ ss-design-system/
 │   ├── ai-agent-workflows/       AI 에이전트 × 디자인시스템 관련 사례/논문
 │   ├── conference-talks/         관련 기존 발표 요약·인용
 │   ├── articles/                 아티클/블로그 스크랩
-│   └── tools/                    관련 오픈소스·도구 조사 (차트 / 이미지 생성 / 도형 / UI 킷)
+│   └── tools/                    관련 오픈소스·도구 조사 (차트 / 이미지 생성 / 도형 / UI 킷 / 디자인 참고 사이트)
 │       ├── charts/
 │       ├── image-gen/
 │       ├── shapes/
-│       └── ui-kits/
+│       ├── ui-kits/
+│       └── design-sites/
 ├── design-examples/             디자인 예시 — 시스템별 UI 스크린샷·목업 (발표 시각자료 원본)
 │   ├── krds/
 │   ├── material-design/

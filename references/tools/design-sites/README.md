@@ -1,10 +1,10 @@
 # 추천 사이트
 
-> `변동/` 값을 채울 때 쓰는 외부 도구·레퍼런스. 규칙(`고정/`)은 바꾸지 않는다. 색을 고르면 [`변동/colors.md`](./변동/colors.md)처럼 primitive → semantic으로 옮기고, 값은 oklch로 적는다.
+> 팔레트·명도·대비·폰트·아이콘·컴포넌트·화면 레퍼런스를 고를 때 쓰는 외부 도구 모음. 저장소 안에서 이 목록을 실제로 써서 값을 채운 예: [`examples/vite-shadcn-demo/doc/design-system/변동/colors.md`](../../../examples/vite-shadcn-demo/doc/design-system/변동/colors.md) — primitive → semantic으로 옮기고 값은 oklch로 적는다.
 >
 > 더 넓은 모음: [개발자가 디자인할 때 참고하면 좋을 사이트 모음집 (velog)](https://velog.io/@ewaterbin/%EA%B0%9C%EB%B0%9C%EC%9E%90%EA%B0%80-%EB%94%94%EC%9E%90%EC%9D%B8-%ED%95%A0-%EB%95%8C-%EC%B0%B8%EA%B3%A0%ED%95%98%EB%A9%B4-%EC%A2%8B%EC%9D%84-%EC%82%AC%EC%9D%B4%ED%8A%B8-%EB%AA%A8%EC%9D%8C%EC%A7%91)
 
-저장소의 도구 조사(`references/tools/`)는 복사해 쓰는 UI 킷·차트 쪽이고, 여기는 **팔레트·폰트·화면 레퍼런스를 고르는 웹 사이트**다.
+`references/tools/`의 다른 폴더(`ui-kits/`, `charts/` 등)는 복사해 쓰는 UI 킷·차트 쪽이고, 여기는 **팔레트·폰트·화면 레퍼런스를 고르는 웹 사이트**다.
 
 ---
 
@@ -35,18 +35,18 @@
 
 ## 명도 단계 · 셰이드
 
-Primary 하나를 고른 뒤, `고정/colors.md`대로 **색상각·채도는 고정하고 명도만** 옮긴 단계를 만들 때.
+Primary 하나를 고른 뒤, [`framework/specs/tokens/colors.md`](../../../framework/specs/tokens/colors.md)대로 **색상각·채도는 고정하고 명도만** 옮긴 단계를 만들 때.
 
 | 사이트 | 주소 | 언제 쓰는지 |
 | --- | --- | --- |
 | 0to255 | https://0to255.com/ | 한 색의 밝고 어두운 단계를 촘촘히 고를 때 |
 | tints.dev | https://www.tints.dev/ | Tailwind식 50–950 스케일을 한 색에서 뽑을 때 |
 | UI Colors | https://uicolors.app/ | 브랜드 hex → Tailwind 팔레트 |
-| OKLCH Color Picker | https://oklch.com/ | 이 프로젝트가 쓰는 `oklch()` 값을 직접 조율 |
+| OKLCH Color Picker | https://oklch.com/ | `oklch()` 값을 직접 조율 |
 
 ## 대비 · 접근성
 
-`고정/colors.md` 6번(WCAG AA **4.5:1**)을 숫자로 확인할 때. `-foreground` 짝을 고르기 전에 여기를 거친다.
+`framework/specs/tokens/colors.md` 6번(WCAG AA **4.5:1**)을 숫자로 확인할 때. `-foreground` 짝을 고르기 전에 여기를 거친다.
 
 | 사이트 | 주소 | 언제 쓰는지 |
 | --- | --- | --- |
@@ -57,7 +57,7 @@ Primary 하나를 고른 뒤, `고정/colors.md`대로 **색상각·채도는 �
 
 ## 폰트
 
-`고정/typography.md` 1번 — **지원 언어를 모두 담는 폰트 하나**. 한글 글리프가 없는 라틴 전용 폰트는 후보에서 뺀다.
+`framework/specs/tokens/typography.md` 1번 — **지원 언어를 모두 담는 폰트 하나**. 한글 글리프가 없는 라틴 전용 폰트는 후보에서 뺀다.
 
 | 사이트 | 주소 | 언제 쓰는지 |
 | --- | --- | --- |
@@ -69,7 +69,7 @@ Primary 하나를 고른 뒤, `고정/colors.md`대로 **색상각·채도는 �
 | Dirtyline Studio | https://dirtylinestudio.com/ | 개성 강한 디스플레이 (유료 비중 큼) |
 | Glyphy | https://glyphy.io/font-generator | 유니코드 장식 글자 생성 — **웹폰트 대체가 아님** |
 
-이 데모는 Pretendard Variable을 쓴다: [`orioncactus/pretendard`](https://github.com/orioncactus/pretendard).
+저장소의 `examples/vite-shadcn-demo`는 Pretendard Variable을 쓴다: [`orioncactus/pretendard`](https://github.com/orioncactus/pretendard).
 
 ## 아이콘
 
@@ -85,7 +85,7 @@ Primary 하나를 고른 뒤, `고정/colors.md`대로 **색상각·채도는 �
 
 ## 컴포넌트 · UI 킷
 
-화면 구조를 베끼기보다, 버튼·카드·입력의 **형태 레퍼런스**로 본다. 토큰 계약은 `고정/`이 우선이다.
+화면 구조를 베끼기보다, 버튼·카드·입력의 **형태 레퍼런스**로 본다. 토큰 계약은 각 프로젝트의 스펙 문서가 우선이다.
 
 | 사이트 | 주소 | 언제 쓰는지 |
 | --- | --- | --- |
@@ -93,14 +93,14 @@ Primary 하나를 고른 뒤, `고정/colors.md`대로 **색상각·채도는 �
 | Call to Inspiration | https://calltoinspiration.com/ | 로그인·프라이싱 등 엘리먼트별 실사 |
 | Figcomponents | https://www.figcomponents.com/ | Figma로 복사해 쓰는 UI |
 | Tailbits | https://www.tailbits.com/ | Tailwind 코드를 IDE에 붙여넣을 때 |
-| shadcn/ui | https://ui.shadcn.com/ | 이 데모가 쓰는 컴포넌트 킷 |
+| shadcn/ui | https://ui.shadcn.com/ | `examples/vite-shadcn-demo`가 쓰는 컴포넌트 킷 |
 | React Bits | https://reactbits.dev/ | 모션·배경 컴포넌트 소스 |
 
-복사해 쓰는 킷의 라이선스·스타 기준 조사는 [`references/tools/ui-kits/`](../../../../references/tools/ui-kits/).
+복사해 쓰는 킷의 라이선스·스타 기준 조사는 [`../ui-kits/`](../ui-kits/).
 
 ## UI/UX 화면 레퍼런스
 
-전체 플로우·밀도·다크모드 인상을 볼 때. 색·간격은 그대로 가져오지 말고 `고정/` 그리드에 다시 맞춘다.
+전체 플로우·밀도·다크모드 인상을 볼 때. 색·간격은 그대로 가져오지 말고 각 프로젝트의 공통 스펙(`framework/specs/tokens/layout.md` 등) 그리드에 다시 맞춘다.
 
 | 사이트 | 주소 | 언제 쓰는지 |
 | --- | --- | --- |
@@ -142,7 +142,7 @@ Primary 하나를 고른 뒤, `고정/colors.md`대로 **색상각·채도는 �
 
 ## 노코드 웹빌더
 
-레퍼런스 사이트를 빠르게 만들어 보거나, 레이아웃 아이디어만 훔칠 때. 이 데모의 스택(Vite + shadcn)을 대체하지 않는다.
+레퍼런스 사이트를 빠르게 만들어 보거나, 레이아웃 아이디어만 훔칠 때. 실제 프로젝트의 스택(예: `examples/vite-shadcn-demo`의 Vite + shadcn)을 대체하지 않는다.
 
 | 사이트 | 주소 | 언제 쓰는지 |
 | --- | --- | --- |
@@ -152,4 +152,4 @@ Primary 하나를 고른 뒤, `고정/colors.md`대로 **색상각·채도는 �
 
 ---
 
-고른 값은 여기가 아니라 **`변동/`** 에 적는다. 색은 oklch·시맨틱 이름 계약을 지키고, 폰트는 한글 포함 여부를 확인한 뒤에만 `변동/typography.md`에 올린다.
+고른 값은 여기가 아니라 실제로 쓰는 프로젝트의 토큰/스펙 문서에 적는다 — 이 저장소의 예: [`examples/vite-shadcn-demo/doc/design-system/변동/`](../../../examples/vite-shadcn-demo/doc/design-system/변동/). 색은 oklch·시맨틱 이름 계약을 지키고, 폰트는 한글 포함 여부를 확인한 뒤에만 typography 토큰에 올린다.

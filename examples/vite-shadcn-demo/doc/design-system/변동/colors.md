@@ -1,6 +1,6 @@
 # 색 — 이 프로젝트가 채운 값
 
-> 규칙: [`../고정/colors.md`](../고정/colors.md) · 실제 코드: [`../../src/index.css`](../../src/index.css), [`../../src/components/ui/button.tsx`](../../src/components/ui/button.tsx), [`../../src/components/ui/badge.tsx`](../../src/components/ui/badge.tsx) · 참고 사이트: [`../추천사이트.md`](../추천사이트.md)
+> 규칙: [`../고정/colors.md`](../고정/colors.md) · 실제 코드: [`../../src/index.css`](../../src/index.css), [`../../src/components/ui/button.tsx`](../../src/components/ui/button.tsx), [`../../src/components/ui/badge.tsx`](../../src/components/ui/badge.tsx) · 참고 사이트: [`references/tools/design-sites/`](../../../../../references/tools/design-sites/README.md)
 
 브랜드색은 실제 회사색이 아니라 **데모용으로 임의 지정한 인디고**다(색상각 265). `prompts/demo/{toss,naver,daangn}.md`처럼 실제 브랜드를 재현하는 문서가 아니라, "고정 계약을 지키는 임의의 프로젝트 하나"를 보여주는 것이 목적이라 실제 브랜드 hex를 쓰지 않았다.
 
