@@ -1,0 +1,357 @@
+/**
+ * 고정 계약 — prompts/framework/color-tokens.md, framework/specs/tokens/{colors,typography,radius,spacing,layout,elevation}.md.
+ * 이 프로젝트가 채운 실제 값은 doc/design-system/변동/*.md 참고 (파일별로 1:1 대응).
+ *
+ * 팔레트는 총 6개, 모두 primitive(--color-{family}-{step}) → semantic(--{name}) 2단계다:
+ *   1. neutral                              — 흑백(chroma 0), 12단계(0~950). 배경·텍스트·보더·표면(surface) 전용.
+ *   2~6. primary / destructive / success / warning / info — 인터랙티브·상태색 5종, 8단계(05·10·20·30·50·60·70·100).
+ * 컴포넌트는 시맨틱 이름만 참조한다. primitive를 직접 쓰지 않는다 (colors.md §3, §7·§9, token-architecture.md).
+ * 8단계 숫자·대비 계산 방법은 doc/design-system/변동/colors.md "팔레트 생성 방법" 참고.
+ */
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --font-heading: var(--font-sans);
+    --font-sans: "Pretendard Variable", Pretendard, -apple-system, "Malgun Gothic", system-ui, sans-serif;
+
+    /*
+     * 타이포그래피 팔레트 — typography.md §토큰화 5단계(heading-1/2 · body-1/2 · caption), 값은 스펙 원문 그대로
+     * (rem, 루트 10px 기준 — 아래 html{font-size:62.5%}와 짝). 클래스: text-heading-1/2, text-body-1/2, text-caption.
+     */
+    --text-heading-1: 2.8rem;
+    --text-heading-1--line-height: 1.4;
+    --text-heading-2: 2.2rem;
+    --text-heading-2--line-height: 1.4;
+    --text-body-1: 1.6rem;
+    --text-body-1--line-height: 1.6;
+    --text-body-2: 1.4rem;
+    --text-body-2--line-height: 1.6;
+    --text-caption: 1.2rem;
+    --text-caption--line-height: 1.4;
+
+    /*
+     * 루트 62.5% 리베이스 보정 — Tailwind v4 기본 spacing·font-size 스케일은 16px 루트를 전제한 rem 값이라
+     * 그대로 두면 8px 그리드와 shadcn 내장 컴포넌트 글자 크기가 62.5%로 줄어든다. 1.6배(=16/10)로 되돌린다.
+     * (doc/design-system/변동/typography.md)
+     */
+    --spacing: 0.4rem;
+    --text-xs: 1.2rem;
+    --text-xs--line-height: 1.6rem;
+    --text-sm: 1.4rem;
+    --text-sm--line-height: 2rem;
+    --text-base: 1.6rem;
+    --text-base--line-height: 2.4rem;
+    --text-lg: 1.8rem;
+    --text-lg--line-height: 2.8rem;
+    --text-xl: 2rem;
+    --text-xl--line-height: 2.8rem;
+    --text-2xl: 2.4rem;
+    --text-2xl--line-height: 3.2rem;
+    --text-3xl: 3rem;
+    --text-3xl--line-height: 3.6rem;
+    --text-4xl: 3.6rem;
+    --text-4xl--line-height: 4rem;
+
+    --color-sidebar-ring: var(--sidebar-ring);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar: var(--sidebar);
+    --color-chart-5: var(--chart-5);
+    --color-chart-4: var(--chart-4);
+    --color-chart-3: var(--chart-3);
+    --color-chart-2: var(--chart-2);
+    --color-chart-1: var(--chart-1);
+    --color-ring: var(--ring);
+    --color-input: var(--input);
+    --color-border: var(--border);
+
+    --color-info-text: var(--info-text);
+    --color-info-border: var(--info-border);
+    --color-info-surface: var(--info-surface);
+    --color-info-foreground: var(--info-foreground);
+    --color-info: var(--info);
+    --color-warning-text: var(--warning-text);
+    --color-warning-border: var(--warning-border);
+    --color-warning-surface: var(--warning-surface);
+    --color-warning-foreground: var(--warning-foreground);
+    --color-warning: var(--warning);
+    --color-success-text: var(--success-text);
+    --color-success-border: var(--success-border);
+    --color-success-surface: var(--success-surface);
+    --color-success-foreground: var(--success-foreground);
+    --color-success: var(--success);
+    --color-destructive-text: var(--destructive-text);
+    --color-destructive-border: var(--destructive-border);
+    --color-destructive-surface: var(--destructive-surface);
+    --color-destructive-foreground: var(--destructive-foreground);
+    --color-destructive: var(--destructive);
+
+    --color-accent-foreground: var(--accent-foreground);
+    --color-accent: var(--accent);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-muted: var(--muted);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-secondary: var(--secondary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary: var(--primary);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-popover: var(--popover);
+    --color-card-foreground: var(--card-foreground);
+    --color-card: var(--card);
+    --color-foreground: var(--foreground);
+    --color-background: var(--background);
+    --radius-sm: calc(var(--radius) * 0.6);
+    --radius-md: calc(var(--radius) * 0.8);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) * 1.4);
+    --radius-2xl: calc(var(--radius) * 1.8);
+    --radius-3xl: calc(var(--radius) * 2.2);
+    --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+    /* ===== neutral primitive — 실측 shadcn 기본값 12단계, 값 그대로 이름만 붙임 ===== */
+    --color-neutral-0: oklch(1 0 0);
+    --color-neutral-50: oklch(0.985 0 0);
+    --color-neutral-100: oklch(0.97 0 0);
+    --color-neutral-200: oklch(0.922 0 0);
+    --color-neutral-300: oklch(0.87 0 0);
+    --color-neutral-400: oklch(0.708 0 0);
+    --color-neutral-500: oklch(0.556 0 0);
+    --color-neutral-600: oklch(0.439 0 0);
+    --color-neutral-700: oklch(0.371 0 0);
+    --color-neutral-800: oklch(0.269 0 0);
+    --color-neutral-900: oklch(0.205 0 0);
+    --color-neutral-950: oklch(0.145 0 0);
+
+    /*
+     * ===== primary/destructive/success/warning/info primitive — 8단계(05·10·20·30·50·60·70·100) =====
+     * 색상각·최대채도만 색상군별로 다르고 명도 커브는 공유한다(colors.md §3). 정확한 값은 임시 Node 스크립트
+     * (culori)로 계산 — 05/10/20/30/50/60/70/100 각 단계 위 흰/검정 대비를 함께 검산했다(대비 결과는
+     * doc/design-system/변동/colors.md 표 참고). 손으로 어림값을 넣지 않았다.
+     */
+    --color-primary-05: oklch(0.97 0.014 265);
+    --color-primary-10: oklch(0.9 0.048 265);
+    --color-primary-20: oklch(0.83 0.084 265);
+    --color-primary-30: oklch(0.75 0.128 265);
+    --color-primary-50: oklch(0.5 0.18 265);
+    --color-primary-60: oklch(0.42 0.171 265);
+    --color-primary-70: oklch(0.34 0.153 265);
+    --color-primary-100: oklch(0.2 0.081 265);
+
+    --color-destructive-05: oklch(0.97 0.015 27);
+    --color-destructive-10: oklch(0.9 0.052 27);
+    --color-destructive-20: oklch(0.83 0.094 27);
+    --color-destructive-30: oklch(0.75 0.151 27);
+    --color-destructive-50: oklch(0.5 0.204 27);
+    --color-destructive-60: oklch(0.42 0.171 27);
+    --color-destructive-70: oklch(0.34 0.139 27);
+    --color-destructive-100: oklch(0.2 0.082 27);
+
+    --color-success-05: oklch(0.97 0.016 150);
+    --color-success-10: oklch(0.9 0.088 150);
+    --color-success-20: oklch(0.83 0.136 150);
+    --color-success-30: oklch(0.75 0.152 150);
+    --color-success-50: oklch(0.44 0.121 150);
+    --color-success-60: oklch(0.37 0.102 150);
+    --color-success-70: oklch(0.3 0.083 150);
+    --color-success-100: oklch(0.2 0.055 150);
+
+    --color-warning-05: oklch(0.97 0.017 85);
+    --color-warning-10: oklch(0.9 0.094 85);
+    --color-warning-20: oklch(0.83 0.145 85);
+    --color-warning-30: oklch(0.75 0.154 85);
+    --color-warning-50: oklch(0.5 0.102 85);
+    --color-warning-60: oklch(0.42 0.086 85);
+    --color-warning-70: oklch(0.34 0.07 85);
+    --color-warning-100: oklch(0.2 0.041 85);
+
+    --color-info-05: oklch(0.97 0.017 230);
+    --color-info-10: oklch(0.9 0.061 230);
+    --color-info-20: oklch(0.83 0.106 230);
+    --color-info-30: oklch(0.75 0.149 230);
+    --color-info-50: oklch(0.5 0.1 230);
+    --color-info-60: oklch(0.42 0.084 230);
+    --color-info-70: oklch(0.34 0.068 230);
+    --color-info-100: oklch(0.2 0.04 230);
+
+    /* ===== 표면(surface) 깊이 -1~+3 — colors.md §6 + elevation.md §3을 합쳐 neutral을 가리킨다 ===== */
+    --surface-recessed: var(--color-neutral-200); /* -1: 오목한 영역(사이드바, 인셋 웰) */
+    --surface-base: var(--color-neutral-50); /*     0: 페이지 캔버스 */
+    --surface-raised: var(--color-neutral-0); /*    1: 카드 — 흰 천장에 가장 먼저 닿는다 */
+    --surface-overlay: var(--color-neutral-0); /*   2: 팝오버 — 천장은 같고 --elevation-2로 구분 */
+    --surface-modal: var(--color-neutral-0); /*     3: 다이얼로그 — --elevation-3 + 딤드로 구분 */
+
+    /* ===== semantic — shadcn 계약 이름, 값은 항상 위 primitive/표면 참조 ===== */
+    --background: var(--surface-base);
+    --foreground: var(--color-neutral-950);
+    --card: var(--surface-raised);
+    --card-foreground: var(--color-neutral-950);
+    --popover: var(--surface-overlay);
+    --popover-foreground: var(--color-neutral-950);
+    --primary: var(--color-primary-50);
+    --primary-foreground: oklch(0.985 0 0);
+    --secondary: var(--color-neutral-100);
+    --secondary-foreground: var(--color-neutral-900);
+    --muted: var(--color-neutral-100);
+    --muted-foreground: var(--color-neutral-500);
+    --accent: var(--color-neutral-100);
+    --accent-foreground: var(--color-neutral-900);
+
+    /* 상태색 4종 — base(solid)/foreground + surface·border·text 3종(soft 배지 패턴, component-contract.md) */
+    --destructive: var(--color-destructive-50);
+    --destructive-foreground: oklch(0.985 0 0);
+    --destructive-surface: var(--color-destructive-05);
+    --destructive-border: var(--color-destructive-10);
+    --destructive-text: var(--color-destructive-60);
+    --success: var(--color-success-50);
+    --success-foreground: oklch(0.985 0 0);
+    --success-surface: var(--color-success-05);
+    --success-border: var(--color-success-10);
+    --success-text: var(--color-success-60);
+    --warning: var(--color-warning-50);
+    --warning-foreground: oklch(0.985 0 0);
+    --warning-surface: var(--color-warning-05);
+    --warning-border: var(--color-warning-10);
+    --warning-text: var(--color-warning-60);
+    --info: var(--color-info-50);
+    --info-foreground: oklch(0.985 0 0);
+    --info-surface: var(--color-info-05);
+    --info-border: var(--color-info-10);
+    --info-text: var(--color-info-60);
+
+    --border: var(--color-neutral-200);
+    --input: var(--color-neutral-200);
+    --ring: var(--color-neutral-400);
+    --chart-1: var(--color-neutral-300);
+    --chart-2: var(--color-neutral-500);
+    --chart-3: var(--color-neutral-600);
+    --chart-4: var(--color-neutral-700);
+    --chart-5: var(--color-neutral-800);
+    --radius: 0.625rem;
+    --sidebar: var(--surface-recessed);
+    --sidebar-foreground: var(--color-neutral-950);
+    --sidebar-primary: var(--color-primary-50);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: var(--color-neutral-100);
+    --sidebar-accent-foreground: var(--color-neutral-900);
+    --sidebar-border: var(--color-neutral-200);
+    --sidebar-ring: var(--color-neutral-400);
+
+    /* ===== 엘리베이션 — elevation.md §2(그림자), 표면 2~3단계가 흰 천장 위에서 구분되는 수단 ===== */
+    --elevation-0: none;
+    --elevation-1: 0 1px 2px oklch(0.145 0 0 / 6%), 0 1px 1px oklch(0.145 0 0 / 4%);
+    --elevation-2: 0 4px 12px oklch(0.145 0 0 / 10%), 0 2px 4px oklch(0.145 0 0 / 6%);
+    --elevation-3: 0 16px 40px oklch(0.145 0 0 / 18%), 0 4px 10px oklch(0.145 0 0 / 10%);
+
+    /*
+     * ===== Depth 기반 간격 — spacing.md "Depth 기반 간격". Mobile 기본값, Desktop은 아래 미디어쿼리에서
+     * 재정의(전부 8의 배수). H1→본문(depth-0), H2 형제(depth-1), H3 형제(depth-2), Body 형제(depth-3).
+     */
+    --space-depth-0: 64px;
+    --space-depth-1: 40px;
+    --space-depth-2: 32px;
+    --space-depth-3: 24px;
+}
+
+@media (min-width: 1280px) {
+    :root {
+        --space-depth-0: 80px;
+        --space-depth-1: 64px;
+        --space-depth-2: 40px;
+        --space-depth-3: 24px;
+    }
+}
+
+.dark {
+    /* 새 팔레트가 아니다 — 같은 primitive 중 라이트 모드와 다른 단계를 가리킨다 (colors.md §12) */
+    --surface-recessed: var(--color-neutral-950); /* -1: 가장 짙은 웰 */
+    --surface-base: var(--color-neutral-900); /*     0: 페이지 캔버스 */
+    --surface-raised: var(--color-neutral-800); /*   1: 카드 — 다크모드는 위로 갈수록 밝아진다(§12) */
+    --surface-overlay: var(--color-neutral-800); /*  2: 팝오버 */
+    --surface-modal: var(--color-neutral-800); /*    3: 다이얼로그 */
+
+    --background: var(--surface-base);
+    --foreground: var(--color-neutral-50);
+    --card: var(--surface-raised);
+    --card-foreground: var(--color-neutral-50);
+    --popover: var(--surface-overlay);
+    --popover-foreground: var(--color-neutral-50);
+    --primary: var(--color-primary-30);
+    --primary-foreground: oklch(0.205 0 0);
+    --secondary: var(--color-neutral-800);
+    --secondary-foreground: var(--color-neutral-50);
+    --muted: var(--color-neutral-800);
+    --muted-foreground: var(--color-neutral-400);
+    --accent: var(--color-neutral-800);
+    --accent-foreground: var(--color-neutral-50);
+
+    --destructive: var(--color-destructive-30);
+    --destructive-foreground: oklch(0.205 0 0);
+    --destructive-surface: var(--color-destructive-100);
+    --destructive-border: var(--color-destructive-70);
+    --destructive-text: var(--color-destructive-20);
+    --success: var(--color-success-30);
+    --success-foreground: oklch(0.205 0 0);
+    --success-surface: var(--color-success-100);
+    --success-border: var(--color-success-70);
+    --success-text: var(--color-success-20);
+    --warning: var(--color-warning-30);
+    --warning-foreground: oklch(0.205 0 0);
+    --warning-surface: var(--color-warning-100);
+    --warning-border: var(--color-warning-70);
+    --warning-text: var(--color-warning-20);
+    --info: var(--color-info-30);
+    --info-foreground: oklch(0.205 0 0);
+    --info-surface: var(--color-info-100);
+    --info-border: var(--color-info-70);
+    --info-text: var(--color-info-20);
+
+    /* 투명도 기반 — 여러 표면색 위에 그대로 얹혀야 해서 고정 단계 대신 white-알파를 쓴다 (예외, colors.md §10) */
+    --border: oklch(1 0 0 / 10%);
+    --input: oklch(1 0 0 / 15%);
+    --ring: var(--color-neutral-500);
+    --chart-1: var(--color-neutral-300);
+    --chart-2: var(--color-neutral-500);
+    --chart-3: var(--color-neutral-600);
+    --chart-4: var(--color-neutral-700);
+    --chart-5: var(--color-neutral-800);
+    --sidebar: var(--surface-recessed);
+    --sidebar-foreground: var(--color-neutral-50);
+    --sidebar-primary: var(--color-primary-30);
+    --sidebar-primary-foreground: oklch(0.205 0 0);
+    --sidebar-accent: var(--color-neutral-800);
+    --sidebar-accent-foreground: var(--color-neutral-50);
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: var(--color-neutral-500);
+
+    /* 그림자만으로 층 구분이 잘 안 보여, 진하기를 올리는 대신 보더 대비로 보완한다 (elevation.md §4) */
+    --elevation-1: 0 1px 2px oklch(0 0 0 / 40%);
+    --elevation-2: 0 4px 12px oklch(0 0 0 / 45%), 0 2px 4px oklch(0 0 0 / 30%);
+    --elevation-3: 0 16px 40px oklch(0 0 0 / 55%), 0 4px 10px oklch(0 0 0 / 35%);
+}
+
+/* typography.md §rem 기준값 — 루트 기본값을 16 대신 10으로 (spec 원문, doc/design-system/변동/typography.md) */
+html {
+    font-size: 62.5%;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    }
+  body {
+    @apply bg-background text-foreground;
+    }
+  html {
+    @apply font-sans;
+    }
+}
