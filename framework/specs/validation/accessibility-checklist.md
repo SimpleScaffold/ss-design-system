@@ -1,6 +1,6 @@
 # 검증 스펙 (Validation Checklist)
 
-> 출처: `talk/script.md`에는 독립된 검증 슬라이드가 없다. 여러 토큰 스펙에 흩어져 있던 접근성·일관성 규칙(`colors.md` §4, `typography.md`, `elevation.md` §4, `components/component-contract.md` §3)을 하나의 체크리스트로 모아 검증 대상으로 승격했다. `framework/scripts/`가 이 체크리스트를 실행 가능한 검증 도구로 구현하는 것을 목표로 한다(현재 미착수).
+> 출처: `talk/script.md`에는 독립된 검증 슬라이드가 없다. 여러 토큰 스펙에 흩어져 있던 접근성·일관성 규칙(`colors.md` §4, `typography.md`, `elevation.md` §4, `components/component-contract.md` §3)을 하나의 체크리스트로 모아 검증 대상으로 승격했다. 이 중 코드로 판단 가능한 항목은 `framework/scripts/`가 실행 가능한 검증 도구로 구현했다(§ "`framework/scripts/`와의 관계" 참고).
 
 ## 1. 왜 별도 스펙인가
 
@@ -55,4 +55,4 @@
 
 ## `framework/scripts/`와의 관계
 
-이 체크리스트의 §2("팔레트 이탈 값")·§5("간격 값") 항목은 코드를 정적으로 스캔해 자동화할 수 있다 (하드코딩된 hex/px 값을 찾아 팔레트·토큰 목록과 대조). §2 대비 계산, §4 상태 레벨 간격도 팔레트 정의만 있으면 자동 계산이 가능하다. `framework/scripts/`가 이 항목들을 실행 가능한 검증 하네스로 구현하는 것을 목표로 하며, 현재는 미착수 상태다.
+이 체크리스트의 §2("팔레트 이탈 값")·§5("간격 값")·§2 대비 계산은 [`framework/scripts/`](../../scripts/)가 실제로 구현했다 — `scan-token-escapes.mjs`(팔레트 이탈 hex·8px/4px 그리드 이탈), `contrast.mjs`(WCAG 명암비 계산). §4 상태 레벨 간격·§6 엘리베이션 단계는 구조적 판단이 필요해 아직 자동화하지 않았다(이유는 `framework/scripts/README.md` "아직 자동화하지 않은 것" 참고).

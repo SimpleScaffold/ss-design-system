@@ -12,11 +12,12 @@ Google Material Design 3 어댑터. 공통 스펙(`framework/specs/tokens/*.md`)
 | `specs/tokens/layout.md`, `specs/tokens/spacing.md` | [`layout.md`](./layout.md) |
 | `specs/tokens/icon.md` | [`icon.md`](./icon.md) |
 | `specs/tokens/elevation.md` | [`elevation.md`](./elevation.md) |
+| `specs/tokens/motion.md` | [`motion.md`](./motion.md) |
 
 ## 참고 소스
 
 - [`material-foundation/material-color-utilities`](https://github.com/material-foundation/material-color-utilities) — HCT 색공간, Tonal Palette, Role→Tone 매핑(`dynamiccolor/color_spec_2021.ts`)의 1차 소스.
-- [`material-components/material-web`](https://github.com/material-components/material-web) `tokens/versions/v0_192/` — Shape/Typescale/Elevation 등 시스템 토큰의 실제 px 값.
+- [`material-components/material-web`](https://github.com/material-components/material-web) `tokens/versions/v0_192/` — Shape/Typescale/Elevation/Motion 등 시스템 토큰의 실제 px·ms 값.
 
 ## 다른 어댑터와 구별되는 특징
 

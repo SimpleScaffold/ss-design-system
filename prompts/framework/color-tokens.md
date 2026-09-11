@@ -33,7 +33,7 @@
    Hover = color-mix(in oklch, var(--primary) 88%, var(--foreground))
    Pressed = color-mix(in oklch, var(--primary) 76%, var(--foreground))
 7. 다크 모드는 새 팔레트가 아니다. 같은 이름을 .dark 에서 재배정한다. 배경은 어두운 L, 텍스트는 밝은 L.
-8. Success/Warning/Info가 필요하면 --success / --warning / --info (+ -foreground)로만 확장한다. --destructive 와 값을 공유하지 마라.
+8. Success/Warning/Info가 필요하면 --success / --warning / --info (+ -foreground)로만 확장한다. --destructive 와 값을 공유하지 마라. 배지·알림처럼 옅은 배경 위에 글자를 올려야 하면 그 상태색에 -surface / -border / -text 세 시맨틱을 추가한다(예: --destructive-surface, --destructive-border, --destructive-text) — 이것도 6번의 파생 금지 대상이 아니라 컴포넌트가 직접 참조하는 정식 이름이다(framework/specs/tokens/colors.md §7).
 9. 무드 액센트는 --accent 이다. 상태색과 HEX를 공유하지 마라.
 10. 출력은 :root { ... } 와 .dark { ... } 두 블록이다. 컴포넌트 CSS에는 var(--primary) 처럼 시맨틱 이름만 쓴다.
 

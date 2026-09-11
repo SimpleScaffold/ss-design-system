@@ -7,7 +7,7 @@
 ```
 이 프로젝트의 디자인 시스템(토큰·컴포넌트)을 framework/specs/ 기준으로 진단하려고 한다. framework/skills/improve.md를 먼저 읽고 그 절차를 그대로 따라라.
 
-1. 전체 스캔 — framework/specs/validation/accessibility-checklist.md §2~§6을 순서대로 돌며 위반 항목을 전부 수집해라. 이 단계는 판단하지 말고 넓게 모으기만 해라. 코드에서 팔레트에 없는 hex/px 하드코딩, 상태 레벨이 인접 단계를 건너뛴 곳, Focus-visible에 비색상 단서가 없는 곳, 8px(예외 4px) 그리드를 벗어난 간격을 찾아라.
+1. 전체 스캔 — framework/specs/validation/accessibility-checklist.md §2~§6을 순서대로 돌며 위반 항목을 전부 수집해라. 이 단계는 판단하지 말고 넓게 모으기만 해라. 먼저 framework/scripts/scan-token-escapes.mjs(팔레트 이탈 hex·8px/4px 그리드)와 framework/scripts/contrast.mjs(대비)를 돌려서 기계적으로 잡히는 위반을 먼저 걷어내고, 그 다음 상태 레벨이 인접 단계를 건너뛴 곳·Focus-visible에 비색상 단서가 없는 곳처럼 스크립트가 못 잡는 항목을 사람이 읽으며 보강해라.
 2. 심각도 분류 — 수집한 항목을 셋으로 나눠라.
    - 사용성 문제(대비 미달, Focus-visible 누락, 터치 타깃 부족 — framework/specs/tokens/states.md §5·§6)
    - 일관성 문제(컴포넌트마다 다른 radius, 시맨틱 토큰 이름이 primitive와 섞여 쓰임 — framework/specs/tokens/token-architecture.md §4 기준으로 확인)

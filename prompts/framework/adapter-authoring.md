@@ -19,7 +19,7 @@ framework/adapters/<시스템명>/에 매핑 문서를 추가하거나 보강하
 6. 그 시스템에 대응 개념 자체가 없으면(예: Material의 layout 토큰 부재, shadcn의 elevation 부재) 억지로 채우지 말고 README의 매핑 표에 "없음"으로 적은 뒤 왜 없는지 한 문단으로 설명해라.
 7. 마지막 섹션은 `## 토큰화 예시` — 공통 스펙의 CSS 커스텀 프로퍼티 형식에 이 시스템의 실제 값을 대입한 코드 블록. 색 토큰이면 `prompts/framework/color-tokens.md` 계약(oklch, `:root`/`.dark`, 시맨틱 이름)을 따르고, primitive 이름을 만들더라도 컴포넌트가 직접 참조하지 않는다는 원칙(`framework/specs/tokens/token-architecture.md` §4)을 지켜라.
 
-새 어댑터라면 framework/adapters/_template/README.md의 매핑 표에 있는 스펙 전부(colors/typography/radius/layout+spacing/icon/elevation)를 확인하고, 대응 개념이 없는 것은 6번대로 처리해라. 작업이 끝나면 framework/adapters/<시스템명>/README.md의 매핑 표와 framework/adapters/_template/README.md 양쪽에 신규 문서를 등재해라.
+새 어댑터라면 framework/adapters/_template/README.md의 매핑 표에 있는 스펙 전부(colors/typography/radius/layout+spacing/icon/elevation/motion)를 확인하고, 대응 개념이 없는 것은 6번대로 처리해라 — motion처럼 공식 소스를 아직 확인 못 했다면 "확인 필요"로 남기고 지어내지 마라(material/motion.md가 material-web의 `_md-sys-motion.scss`를 직접 확인해 작성한 사례). patterns(media/navigation/form)·token-architecture·states는 개별 매핑 문서를 새로 만들지 않는다 — 시스템별 차이가 있으면 해당 개념이 속한 colors.md 등 기존 매핑 문서 안에서 설명해라(ant-design/colors.md의 Hover/Active 반례가 이 방식의 예시). 작업이 끝나면 framework/adapters/<시스템명>/README.md의 매핑 표와 framework/adapters/_template/README.md, framework/resources/manifest.json 세 곳 모두에 신규 문서를 등재해라.
 
 이번에 작업할 시스템/문서: [시스템명과, 이번에 새로 작성하거나 보강할 매핑 문서, 확인한 공식 소스 링크를 여기에 채워 넣는다]
 ```

@@ -10,8 +10,8 @@ framework/specs/pipeline.md 5단계 산출물 — AI 디자인 생성 도구에 
 절대 규칙: 이 단계는 요약이지 원본이 아니다. 1~4단계(공통 스펙 → 어댑터 → 토큰 파일 → 프레임워크 설정)에 없는 새 규칙을 여기서 만들어내지 마라. 토큰 파일에 없는 값을 "대략 이 정도"로 지어내지도 마라 — 값이 없으면 그 항목을 빼거나, 먼저 3~4단계를 채우라고 요청해라.
 
 1. 입력으로 받을 것: 이 프로젝트의 토큰 파일(`examples/tokens/tokens.css` 형식, 또는 이미 채워진 프로젝트의 실제 CSS 변수), 그리고 화면 설명 한 문장.
-2. framework/specs/의 10개 스펙 영역(colors/typography/radius/spacing/layout/icon/elevation/motion/states/token-architecture + patterns의 media/navigation/form + components/validation)을 훑어서, 이번 화면에 실제로 해당하는 영역만 골라라. 모든 화면에 모든 영역이 필요한 것은 아니다(예: 모달이 없는 화면에 media.md의 모달 규칙을 넣지 마라).
-3. 고른 영역마다 대괄호 블록([색상], [Radius], [타이포그래피], [레이아웃], [아이콘], [상태], [텍스트] 등)을 만들고, 그 안에 규칙 + 토큰 파일의 실제 값을 함께 적어라. 규칙만 있고 값이 없으면("파란 계열을 쓴다") AI가 실행할 때마다 다른 결과를 낸다 — 반드시 토큰 파일의 실제 oklch/px 값을 그대로 붙여넣어라.
+2. framework/specs/의 스펙 영역 전체(tokens: colors/typography/radius/spacing/layout/icon/elevation/motion/states/token-architecture, patterns: media/navigation/form, components/validation)를 훑어서, 이번 화면에 실제로 해당하는 영역만 골라라. 모든 화면에 모든 영역이 필요한 것은 아니다(예: 모달이 없는 화면에 media.md의 모달 규칙을, 사이드바가 없는 화면에 navigation.md 규칙을 넣지 마라). motion.md처럼 프로젝트 토큰 파일에 아직 실제 값이 없는 영역은 이번 화면에서 빼라 — 값 없이 규칙만 나열하지 마라(3번과 같은 이유).
+3. 고른 영역마다 대괄호 블록([색상], [Radius], [타이포그래피], [레이아웃], [아이콘], [엘리베이션], [상태], [텍스트/미디어], [검증] 등)을 만들고, 그 안에 규칙 + 토큰 파일의 실제 값을 함께 적어라. 규칙만 있고 값이 없으면("파란 계열을 쓴다") AI가 실행할 때마다 다른 결과를 낸다 — 반드시 토큰 파일의 실제 oklch/px 값을 그대로 붙여넣어라.
 4. 색상 블록은 prompts/framework/color-tokens.md 계약(시맨틱 이름, oklch, 60-30-10 비율)을 그대로 따른다.
 5. 상태(Hover/Pressed/Disabled/Focus)를 다루는 컴포넌트가 있으면 framework/specs/tokens/states.md의 전이 규칙을 한 줄로 포함해라.
 6. 마지막 문장은 항상 "이 규칙을 모두 반영해서 디자인해 주세요" 같은 명확한 실행 지시로 끝내라 — 규칙 나열만 하고 지시 없이 끝내지 마라.

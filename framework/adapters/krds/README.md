@@ -12,6 +12,7 @@ KRDS(Korea Design System) 어댑터. 공통 스펙(`framework/specs/tokens/*.md`
 | `specs/tokens/layout.md`, `specs/tokens/spacing.md` | [`layout.md`](./layout.md) |
 | `specs/tokens/icon.md` | [`icon.md`](./icon.md) |
 | `specs/tokens/elevation.md` | [`elevation.md`](./elevation.md) |
+| `specs/tokens/motion.md` | 없음 — `krds-uiux` 공식 토큰 JSON(`tokens/transformed_tokens.json`)을 직접 확인한 결과 duration/easing/motion/transition 관련 키가 전혀 없다(2026-01 기준). 정부 서비스 표준형 스타일 특성상 모션을 시스템 레벨 토큰으로 관리하지 않는 것으로 보인다. |
 
 > `components`/`validation`은 공통 스펙 자체가 값이 아니라 "토큰을 어떻게 쓰고 확인하는지"의 계약이라 어댑터가 매핑할 대상이 아니다(`framework/specs/README.md` 참고) — 미착수가 아니라 의도적으로 매핑 문서를 두지 않는 것.
 

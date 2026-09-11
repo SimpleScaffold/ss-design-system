@@ -1,0 +1,161 @@
+{
+  "$comment": "framework/specs/validation/accessibility-checklist.md의 기계 판독용 버전. 사람이 읽는 원본은 그 md 파일이 원본(source of truth)이고, 이 JSON은 파생물이다 — 항목을 바꾸려면 md를 먼저 고치고 이 파일에 반영한다.",
+  "source": "framework/specs/validation/accessibility-checklist.md",
+  "executionOrder": ["colors", "typography", "state", "layout", "elevation"],
+  "quickPass": ["contrast", "palette-escape", "focus-visible"],
+  "categories": [
+    {
+      "id": "colors",
+      "title": "색상 검증",
+      "section": "§2",
+      "items": [
+        {
+          "id": "contrast",
+          "title": "대비(Contrast)",
+          "criterion": "본문 텍스트/배경 4.5:1 이상 (WCAG AA)",
+          "source": "tokens/colors.md §4",
+          "automated": true,
+          "script": "framework/scripts/contrast.mjs"
+        },
+        {
+          "id": "contrast-high",
+          "title": "고대비 모드 대비",
+          "criterion": "본문 7:1 이상, 헤딩/레이블 4.5:1 이상",
+          "source": "tokens/colors.md §12",
+          "automated": true,
+          "script": "framework/scripts/contrast.mjs"
+        },
+        {
+          "id": "color-not-sole-carrier",
+          "title": "색상 단독 사용 금지",
+          "criterion": "상태(성공/오류 등)를 색상만으로 표현하지 않았는가 — 아이콘/텍스트 병행 여부",
+          "source": "tokens/colors.md §12",
+          "automated": false
+        },
+        {
+          "id": "palette-escape",
+          "title": "팔레트 이탈 값",
+          "criterion": "코드에 tokens/colors.md의 팔레트/레벨에 없는 hex 값이 하드코딩되어 있지 않은가",
+          "source": "팔레트 일관성",
+          "automated": true,
+          "script": "framework/scripts/scan-token-escapes.mjs"
+        }
+      ]
+    },
+    {
+      "id": "typography",
+      "title": "타이포그래피 검증",
+      "section": "§3",
+      "items": [
+        {
+          "id": "line-height",
+          "title": "줄간격",
+          "criterion": "본문 기준 최소 150%",
+          "automated": false
+        },
+        {
+          "id": "font-count",
+          "title": "폰트 개수",
+          "criterion": "프로젝트 전체에서 지정한 1개 폰트 패밀리만 사용",
+          "source": "tokens/typography.md",
+          "automated": false
+        },
+        {
+          "id": "language-coverage",
+          "title": "지원 언어 커버리지",
+          "criterion": "서비스 지원 언어를 모두 커버하는 폰트인가",
+          "automated": false
+        }
+      ]
+    },
+    {
+      "id": "state",
+      "title": "상태(State)·상호작용 검증",
+      "section": "§4",
+      "items": [
+        {
+          "id": "state-level-gap",
+          "title": "상태 레벨 간격",
+          "criterion": "Default→Hover→Pressed가 팔레트 인접 레벨만 이동했는가 (50→90처럼 건너뛰지 않기)",
+          "source": "tokens/states.md §3",
+          "automated": false,
+          "note": "구조적 판단이 필요해 정적 스캔만으로는 아직 자동화하지 않음"
+        },
+        {
+          "id": "focus-visible",
+          "title": "Focus-visible",
+          "criterion": "색상 변화 외에 outline/ring 등 비색상 단서가 있는가",
+          "source": "tokens/states.md §4",
+          "automated": false
+        },
+        {
+          "id": "touch-target",
+          "title": "터치 타깃",
+          "criterion": "상호작용 요소의 탭/클릭 영역이 시각적 크기보다 작지 않은가",
+          "source": "tokens/states.md §5",
+          "automated": false
+        },
+        {
+          "id": "disabled-contrast",
+          "title": "Disabled 대비",
+          "criterion": "비활성 상태도 \"비활성임을 알아볼 수 있는\" 최소 대비를 유지하는가",
+          "source": "tokens/states.md §6",
+          "automated": true,
+          "script": "framework/scripts/contrast.mjs",
+          "note": "대비 계산 자체는 자동화됨 — 어떤 요소가 disabled 상태인지 식별은 사람이 한다"
+        }
+      ]
+    },
+    {
+      "id": "layout",
+      "title": "레이아웃·간격 검증",
+      "section": "§5",
+      "items": [
+        {
+          "id": "spacing-grid",
+          "title": "간격 값",
+          "criterion": "8px 단위(예외 4px) 외의 임의 값이 없는가",
+          "source": "tokens/spacing.md",
+          "automated": true,
+          "script": "framework/scripts/scan-token-escapes.mjs"
+        },
+        {
+          "id": "radius-consistency",
+          "title": "Radius 값",
+          "criterion": "프로젝트에 정의한 단일 radius 기준 외 값이 없는가",
+          "source": "tokens/radius.md",
+          "automated": false,
+          "note": "px 그리드 스캔 로직은 재사용 가능하나 radius 전용 허용 목록과의 대조는 미구현"
+        },
+        {
+          "id": "column-gutter-alignment",
+          "title": "Column/Gutter 정렬",
+          "criterion": "요소가 Column 경계에서 시작/종료하는가",
+          "source": "tokens/layout.md",
+          "automated": false
+        }
+      ]
+    },
+    {
+      "id": "elevation",
+      "title": "엘리베이션 검증",
+      "section": "§6",
+      "items": [
+        {
+          "id": "elevation-step-count",
+          "title": "단계 수",
+          "criterion": "정의한 단계(예: base/raised/overlay) 밖의 임의 그림자 값이 없는가",
+          "source": "tokens/elevation.md §3",
+          "automated": false
+        },
+        {
+          "id": "dark-mode-elevation",
+          "title": "다크 모드 대응",
+          "criterion": "다크/고대비 모드에서 그림자 대신 보더·표면색 대비로 층을 구분하는가",
+          "source": "tokens/elevation.md §4",
+          "automated": false
+        }
+      ]
+    }
+  ]
+}

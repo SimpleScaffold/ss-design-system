@@ -1,0 +1,94 @@
+{
+  "$comment": "framework/specs/와 framework/adapters/의 파일 목록 + 매핑 관계를 기계 판독용으로 정리한 것. 사람이 읽는 원본은 framework/specs/README.md, framework/adapters/_template/README.md의 매핑 표다 — 새 스펙/어댑터를 추가하면 이 파일도 함께 갱신한다.",
+  "generatedFrom": ["framework/specs/README.md", "framework/adapters/_template/README.md"],
+  "specs": {
+    "tokens": [
+      { "id": "colors", "path": "framework/specs/tokens/colors.md" },
+      { "id": "typography", "path": "framework/specs/tokens/typography.md" },
+      { "id": "radius", "path": "framework/specs/tokens/radius.md" },
+      { "id": "spacing", "path": "framework/specs/tokens/spacing.md" },
+      { "id": "layout", "path": "framework/specs/tokens/layout.md" },
+      { "id": "icon", "path": "framework/specs/tokens/icon.md" },
+      { "id": "elevation", "path": "framework/specs/tokens/elevation.md" },
+      { "id": "motion", "path": "framework/specs/tokens/motion.md", "note": "값은 미정 — 어댑터가 채운다" },
+      { "id": "token-architecture", "path": "framework/specs/tokens/token-architecture.md", "note": "횡단 스펙 — 특정 토큰 종류가 아니라 계층 구조를 정의" },
+      { "id": "states", "path": "framework/specs/tokens/states.md", "note": "횡단 스펙 — 상태 목록·전이 규칙" }
+    ],
+    "patterns": [
+      { "id": "media", "path": "framework/specs/patterns/media.md" },
+      { "id": "navigation", "path": "framework/specs/patterns/navigation.md" },
+      { "id": "form", "path": "framework/specs/patterns/form.md" }
+    ],
+    "components": [
+      { "id": "component-contract", "path": "framework/specs/components/component-contract.md" }
+    ],
+    "validation": [
+      { "id": "accessibility-checklist", "path": "framework/specs/validation/accessibility-checklist.md" }
+    ],
+    "pipeline": [
+      { "id": "pipeline", "path": "framework/specs/pipeline.md" }
+    ]
+  },
+  "adapters": {
+    "krds": {
+      "readme": "framework/adapters/krds/README.md",
+      "mappings": {
+        "colors": "framework/adapters/krds/colors.md",
+        "typography": "framework/adapters/krds/typography.md",
+        "radius": "framework/adapters/krds/radius.md",
+        "layout+spacing": "framework/adapters/krds/layout.md",
+        "icon": "framework/adapters/krds/icon.md",
+        "elevation": "framework/adapters/krds/elevation.md"
+      },
+      "notMapped": {
+        "motion": "krds-uiux 공식 토큰 JSON에 duration/easing 키가 없음 — README.md 참고"
+      },
+      "notCovered": ["media", "navigation", "form"]
+    },
+    "material": {
+      "readme": "framework/adapters/material/README.md",
+      "mappings": {
+        "colors": "framework/adapters/material/colors.md",
+        "typography": "framework/adapters/material/typography.md",
+        "radius": "framework/adapters/material/radius.md",
+        "layout+spacing": "framework/adapters/material/layout.md",
+        "icon": "framework/adapters/material/icon.md",
+        "elevation": "framework/adapters/material/elevation.md",
+        "motion": "framework/adapters/material/motion.md"
+      },
+      "notCovered": ["media", "navigation", "form"]
+    },
+    "ant-design": {
+      "readme": "framework/adapters/ant-design/README.md",
+      "mappings": {
+        "colors": "framework/adapters/ant-design/colors.md",
+        "typography": "framework/adapters/ant-design/typography.md",
+        "radius": "framework/adapters/ant-design/radius.md",
+        "layout+spacing": "framework/adapters/ant-design/layout.md",
+        "icon": "framework/adapters/ant-design/icon.md"
+      },
+      "notMapped": {
+        "elevation": "Seed→Map 파생 알고리즘 소스에 그림자 생성기가 없음 — README.md 참고"
+      },
+      "notCovered": ["motion", "media", "navigation", "form"]
+    },
+    "shadcn": {
+      "readme": "framework/adapters/shadcn/README.md",
+      "mappings": {
+        "colors": "framework/adapters/shadcn/colors.md",
+        "radius": "framework/adapters/shadcn/radius.md"
+      },
+      "notMapped": {
+        "typography": "Tailwind 기본 유틸리티에 위임",
+        "layout+spacing": "Tailwind 기본 spacing scale에 위임",
+        "icon": "라이브러리 강제 없음, lucide-react 관례만 있음",
+        "elevation": "전용 shadow 토큰 없음, Tailwind shadow-* 유틸리티에 위임"
+      },
+      "notCovered": ["motion", "media", "navigation", "form"]
+    }
+  },
+  "notes": [
+    "components/component-contract.md와 validation/accessibility-checklist.md는 어댑터가 값을 채우는 대상이 아니다(framework/specs/README.md 참고) — 위 어댑터 매핑 표에 없는 게 정상.",
+    "token-architecture.md·states.md는 색상 등 개별 스펙 문서 안에서 시스템별 차이를 설명하는 방식으로 다뤄진다 — 별도 어댑터 매핑 문서를 두지 않는다(framework/adapters/_template/README.md 참고)."
+  ]
+}

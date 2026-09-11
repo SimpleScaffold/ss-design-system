@@ -10,7 +10,7 @@
 
 ## 절차
 
-1. **전체 스캔** — `validation/accessibility-checklist.md`의 §2~§6을 순서대로 돌며 위반 항목을 전부 수집한다. 이 단계는 넓게, 얕게 — 판단하지 않고 모으기만 한다.
+1. **전체 스캔** — `validation/accessibility-checklist.md`의 §2~§6을 순서대로 돌며 위반 항목을 전부 수집한다. §2 팔레트 이탈·§5 간격 값은 `framework/scripts/scan-token-escapes.mjs`로, §2 대비는 `framework/scripts/contrast.mjs`로 먼저 기계적으로 걸러낸다. 이 단계는 넓게, 얕게 — 판단하지 않고 모으기만 한다.
 2. **심각도 분류** — 수집한 항목을 아래 기준으로 나눈다.
    - **사용성 문제** (예: 대비 기준 미달, Focus-visible 누락) — 실제 사용자가 겪는 문제라 우선순위 최상위.
    - **일관성 문제** (예: 컴포넌트마다 다른 radius, `--color-primary`와 `--primary`가 섞임, hover를 파일마다 다르게 파생) — 눈에 띄지만 당장 기능은 멀쩡한 경우. 색은 [`prompts/framework/color-tokens.md`](../../prompts/framework/color-tokens.md) 이름과 맞는지만 본다.

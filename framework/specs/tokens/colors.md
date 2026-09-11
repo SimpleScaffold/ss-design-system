@@ -66,6 +66,10 @@ Primary 외에 시스템 상태를 표현하는 보조 팔레트를 미리 정�
 
 Success / Warning / Info는 기본 세트에 없다. 필요하면 같은 형식(`--success`, `--warning`, `--info` + `-foreground`)으로만 확장한다 — HEX를 컴포넌트에 직접 넣지 않는다.
 
+> 출처: `talk/script.md`에는 없는 내용. `examples/vite-shadcn-demo/`가 실제 배지·알림 컴포넌트를 만들며 정리해둔 규칙을 승격했다.
+
+상태색(Danger/Success/Warning/Info)은 base 하나로 끝나지 않는다 — 배지·알림처럼 옅은 배경 위에 글자를 올리는 용도가 있으면, 같은 색상군 안에서 **surface(옅은 배경) / border(테두리) / text(글자)** 세 시맨틱을 추가로 정의한다(예: `--destructive-surface`, `--destructive-border`, `--destructive-text`). 셋 다 §5의 상태 파생값이 아니라 컴포넌트가 직접 참조하는 정식 이름이므로 §5(파생 토큰 금지) 규칙과 배치되지 않는다.
+
 ## 8. 시스템 색상 → 컴포넌트 매핑
 
 시스템 색상(위 보조 팔레트)을 정의한 뒤, 각 컴포넌트가 어떤 시맨틱 토큰을 쓸지 명시적으로 매핑한다 (예: `Button/Primary/Default = --primary`, `Alert/Danger/Background = --destructive`).

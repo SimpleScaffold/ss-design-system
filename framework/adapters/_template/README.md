@@ -21,7 +21,7 @@
 | `specs/tokens/elevation.md` | `elevation.md` (해당 시스템에 개념이 없으면 README의 매핑 표에 "없음 + 이유"만 명시하고 파일 자체는 생략한다 — krds·material은 작성됨, ant-design·shadcn은 "없음"으로 명시됨) |
 | `specs/tokens/token-architecture.md` | 대응 매핑 문서를 따로 만들지 않는다 — 각 시스템의 3계층 이름 대응은 `colors.md`의 토큰화 섹션에서 함께 설명한다 |
 | `specs/tokens/states.md` | 대응 매핑 문서를 따로 만들지 않는다 — 상태 전이 방향처럼 시스템마다 다른 부분은 `colors.md`에서 다룬다(`ant-design/README.md`의 Hover/Active 반례 참고) |
-| `specs/tokens/motion.md` | 대응 매핑 문서 없음 (2026-09 기준 네 어댑터 모두 미착수 — 소스에 duration/easing 토큰이 확인되면 `motion.md`를 신설한다) |
+| `specs/tokens/motion.md` | `motion.md` (해당 시스템 소스에 duration/easing 토큰이 없으면 "없음 + 이유"만 명시 — material은 `_md-sys-motion.scss`로 작성 완료, krds·ant-design·shadcn은 아직 미착수) |
 | `specs/patterns/media.md` | 대응 매핑 문서 없음 (2026-09 기준 네 어댑터 모두 미착수) |
 | `specs/patterns/navigation.md`, `specs/patterns/form.md` | 대응 매핑 문서 없음 (2026-09 기준 네 어댑터 모두 미착수) |
 

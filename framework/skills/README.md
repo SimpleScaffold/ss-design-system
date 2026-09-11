@@ -8,4 +8,4 @@
 | [`transform.md`](./transform.md) | 하드코딩된 값이 흩어진 기존 코드에서 규칙을 역산해 토큰 체계로 옮긴다 |
 | [`improve.md`](./improve.md) | 이미 토큰화된 시스템을 `framework/specs/validation/`으로 진단하고 개선안을 낸다 |
 
-세 스킬 모두 `framework/specs/`(무엇이 규칙인지)와 `framework/specs/validation/`(규칙을 지켰는지 확인하는 법)을 공유하며, 실행 단계(코드 스캔·치환)를 `framework/scripts/`가 자동화하는 것을 목표로 한다(스크립트 자체는 미착수).
+세 스킬 모두 `framework/specs/`(무엇이 규칙인지)와 `framework/specs/validation/`(규칙을 지켰는지 확인하는 법)을 공유하며, 실행 단계(코드 스캔) 일부는 `framework/scripts/`의 `scan-token-escapes.mjs`·`contrast.mjs`가 이미 자동화한다 — 특히 `improve`의 §1 전체 스캔에서 먼저 돌린다. 치환(transform §5) 자체는 아직 사람이 컴포넌트 단위로 진행한다.
