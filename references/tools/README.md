@@ -1,7 +1,7 @@
 # tools
 
 발표·예시·에이전트 작업에 쓸 **외부 오픈소스/웹 도구 조사**.
-실행 스크립트는 [`tools/`](../../tools/)(image-gen, screenshot 등), 프레임워크 검증은 [`framework/scripts/`](../../framework/scripts/)에 둔다.
+실행 스크립트는 [`tools/`](../../tools/)(image-gen, screenshot 등), 프레임워크 검증은 [`framework/scripts/`](../../framework/scripts/)에 둘 예정이지만 **둘 다 아직 미착수**(README만 있고 실제 스크립트는 없다) — 여기 조사한 도구를 실제로 자동화할 때 그 두 디렉터리를 채운다.
 
 용도별로 나눠 둔다. 도구를 추가할 때는 아래 해당 폴더 README에 출처·용도·라이선스를 적는다.
 

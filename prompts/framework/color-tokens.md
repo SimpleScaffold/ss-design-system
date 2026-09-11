@@ -29,7 +29,7 @@
    --sidebar-border --sidebar-ring
 4. 면적 비율: 60% --background / 30% --card·--muted / 10% --primary.
 5. 브랜드색은 --primary (필요 시 --sidebar-primary)만 덮어쓴다. --primary-foreground 는 그 위 글자이며 명암비 4.5 이상을 만족하는 쪽(밝은 면 또는 어두운 면)을 고른다.
-6. --color-primary, --color-bg, --primary-50, --primary-hover 를 public API로 쓰지 마라.
+6. --color-primary-50 같은 primitive 이름 자체는 만들어도 된다 — 다만 컴포넌트 CSS·AI 프롬프트 등 바깥에서는 절대 직접 참조하지 마라. Semantic(--primary 등)만 그 primitive를 가리키고, 그 바깥은 항상 Semantic만 본다(framework/specs/tokens/token-architecture.md §3·§4). --primary-hover 처럼 상태 전용 이름을 새로 만드는 것도 금지 — 상태는 파생값으로 표현한다:
    Hover = color-mix(in oklch, var(--primary) 88%, var(--foreground))
    Pressed = color-mix(in oklch, var(--primary) 76%, var(--foreground))
 7. 다크 모드는 새 팔레트가 아니다. 같은 이름을 .dark 에서 재배정한다. 배경은 어두운 L, 텍스트는 밝은 L.

@@ -34,3 +34,18 @@ KRDS의 "24×24 1000% 키라인" 개념과 동일한 목적 — 정사각/원형
 
 - 색상은 별도 아이콘 팔레트 없이 **텍스트와 동일한 M3 색상 role**(`onSurface`, `onSurfaceVariant` 등)을 그대로 사용 — [`colors.md`](./colors.md)의 role 시스템에 완전히 종속.
 - 라이브러리에 없는 아이콘 필요 시: 공통 스펙의 3가지 대응(AI 생성/변환 도구/배경 제거)에 더해, Material은 커뮤니티가 만든 "Material Symbols 커스텀 아이콘 빌더"로 동일한 그리드·축 규칙을 적용해 제작하는 경로를 공식 제공한다.
+
+## 토큰화 예시
+
+```css
+:root {
+  --icon-size-sm: 20px;
+  --icon-size-base: 24px; /* 기본 */
+  --icon-size-lg: 40px;
+  --icon-size-xl: 48px;
+  --icon-fill: 0;   /* FILL 축 0~1 */
+  --icon-weight: 400; /* wght 축 100~700 */
+}
+```
+
+색상은 별도 토큰 없이 M3 색상 role(`--on-surface`, `--on-surface-variant` 등)을 상속한다.

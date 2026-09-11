@@ -65,3 +65,33 @@
 - **Gap**: 컴포넌트 사이 간격(카드, 리스트 항목 등).
 - **Padding**: 컴포넌트 내부 여백.
 - 반응형: PC/Mobile 두 기기 유형 기준으로 각 값이 달라짐 — 예) 카드 내부 패딩 `padding-card`가 large(40px)~xsmall(16px)까지 4단계로 반응형 정의됨.
+
+## 토큰화 예시
+
+```css
+:root {
+  --layout-max-width: 1200px;
+  --layout-screen-margin: 16px; /* small 기준 최소값 */
+  --layout-gutter: 16px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 40px;
+  --space-7: 48px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --layout-screen-margin: 24px;
+    --layout-gutter: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --layout-gutter: 24px;
+  }
+}
+```

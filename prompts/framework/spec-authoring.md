@@ -20,5 +20,5 @@ framework/specs/ 아래에 새 공통 스펙 파일을 추가하려고 한다. �
 
 ## 관련
 
-- 적용 사례: [`framework/specs/components/component-contract.md`](../../framework/specs/components/component-contract.md), [`framework/specs/validation/accessibility-checklist.md`](../../framework/specs/validation/accessibility-checklist.md)
+- 적용 사례: [`framework/specs/components/component-contract.md`](../../framework/specs/components/component-contract.md), [`framework/specs/validation/accessibility-checklist.md`](../../framework/specs/validation/accessibility-checklist.md), [`framework/specs/tokens/token-architecture.md`](../../framework/specs/tokens/token-architecture.md), [`framework/specs/tokens/states.md`](../../framework/specs/tokens/states.md), [`framework/specs/tokens/motion.md`](../../framework/specs/tokens/motion.md), [`framework/specs/patterns/navigation.md`](../../framework/specs/patterns/navigation.md), [`framework/specs/patterns/form.md`](../../framework/specs/patterns/form.md)
 - house style 원본 근거: [`framework/specs/tokens/colors.md`](../../framework/specs/tokens/colors.md), [`framework/specs/tokens/elevation.md`](../../framework/specs/tokens/elevation.md)

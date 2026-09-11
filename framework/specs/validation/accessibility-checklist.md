@@ -27,9 +27,10 @@
 
 | 항목 | 기준 |
 | --- | --- |
-| 상태 레벨 간격 | Default→Hover→Pressed가 팔레트 인접 레벨만 이동했는가 (`tokens/colors.md` §5 — 50→90처럼 건너뛰지 않기) |
-| Focus-visible | 색상 변화 외에 outline/ring 등 비색상 단서가 있는가 (`components/component-contract.md` §3) |
-| Disabled 대비 | 비활성 상태도 "비활성임을 알아볼 수 있는" 최소 대비를 유지하는가 |
+| 상태 레벨 간격 | Default→Hover→Pressed가 팔레트 인접 레벨만 이동했는가 (`tokens/states.md` §3 — 50→90처럼 건너뛰지 않기) |
+| Focus-visible | 색상 변화 외에 outline/ring 등 비색상 단서가 있는가 (`tokens/states.md` §4) |
+| 터치 타깃 | 상호작용 요소의 탭/클릭 영역이 시각적 크기보다 작지 않은가 (`tokens/states.md` §5) |
+| Disabled 대비 | 비활성 상태도 "비활성임을 알아볼 수 있는" 최소 대비를 유지하는가 (`tokens/states.md` §6) |
 
 ## 5. 레이아웃·간격 검증
 

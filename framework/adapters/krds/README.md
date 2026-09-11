@@ -11,8 +11,9 @@ KRDS(Korea Design System) 어댑터. 공통 스펙(`framework/specs/tokens/*.md`
 | `specs/tokens/radius.md` | [`radius.md`](./radius.md) |
 | `specs/tokens/layout.md`, `specs/tokens/spacing.md` | [`layout.md`](./layout.md) |
 | `specs/tokens/icon.md` | [`icon.md`](./icon.md) |
+| `specs/tokens/elevation.md` | [`elevation.md`](./elevation.md) |
 
-> `components`/`validation` 공통 스펙은 아직 정의되지 않아 대응 매핑도 미착수.
+> `components`/`validation`은 공통 스펙 자체가 값이 아니라 "토큰을 어떻게 쓰고 확인하는지"의 계약이라 어댑터가 매핑할 대상이 아니다(`framework/specs/README.md` 참고) — 미착수가 아니라 의도적으로 매핑 문서를 두지 않는 것.
 
 ## 참고 소스
 

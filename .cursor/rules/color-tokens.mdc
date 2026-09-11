@@ -10,6 +10,6 @@ alwaysApply: false
 
 - 출발점: `examples/tokens/tokens.css`의 `:root` / `.dark`
 - 값은 `oklch(...)`. 브랜드 hex는 `--primary`(필요 시 `--sidebar-primary`)에만 변환해 넣는다
-- 시맨틱 이름을 바꾸거나 `--color-primary`, `--primary-50`, `--primary-hover`를 public API로 쓰지 않는다
+- 시맨틱 이름을 바꾸지 않는다. `--color-primary-50` 같은 primitive 이름은 만들어도 되지만 Semantic 밖에서 직접 참조하지 않으며, `--primary-hover` 같은 상태 전용 이름은 만들지 않는다(`framework/specs/tokens/token-architecture.md` §4)
 - Hover/Pressed는 `color-mix(in oklch, var(--primary) 88%/76%, var(--foreground))`
 - 새 프롬프트에 색 규칙이 있으면 `color-tokens.md`를 가리키거나 그 프롬프트를 포함한다

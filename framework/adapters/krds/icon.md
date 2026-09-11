@@ -48,3 +48,19 @@
 ## 7. 라이브러리에 없는 아이콘이 필요할 때
 
 공통 스펙의 대응 방법(AI 생성 / 변환 도구 / 배경 제거)을 그대로 적용하되, KRDS 맥락에서는 신규 아이콘도 위 키라인·두께·둥글기 규칙을 반드시 따라야 "시스템 아이콘"으로 인정된다는 점이 다르다.
+
+## 토큰화 예시
+
+```css
+:root {
+  --icon-size-sm: 16px;
+  --icon-size-md: 20px;
+  --icon-size-base: 24px; /* 기본 */
+  --icon-size-lg: 32px;
+  --icon-size-xl: 40px;
+  --icon-stroke-width: 1.6px; /* 24px 기준 */
+  --icon-join-radius: 0.8px;  /* 모서리 둥글기 */
+}
+```
+
+색상은 별도 토큰 없이 텍스트와 같은 시맨틱(`colors.md`)을 상속한다.

@@ -20,12 +20,7 @@
 
 ## 3. State 목록 (공통)
 
-- **Default** — 아무 상호작용도 없는 기본 상태.
-- **Hover** — 포인터가 올라간 상태 (터치 전용 기기에는 해당 없음, 생략 가능).
-- **Pressed** — 누르고 있는 상태. `tokens/colors.md` §5의 상태 색상 규칙(`--primary`의 oklch L을 한 단계씩)을 그대로 따른다.
-- **Disabled** — 상호작용 불가. 색상은 보통 `--muted` / `--muted-foreground`로 대체하고, 커서도 `not-allowed`로 바꾼다.
-- **Focus-visible** — 키보드 포커스. 색상만으로 표시하지 않고 outline/ring 같은 비색상 단서를 반드시 함께 준다 (`validation/accessibility-checklist.md` §4).
-- **Loading** — 비동기 처리 중. 텍스트는 유지하거나 스피너로 교체하되 컴포넌트 크기는 유지한다(레이아웃 밀림 방지).
+State 종류·전이 방향·인접 레벨 이동·Focus-visible·터치 타깃 규칙은 [`tokens/states.md`](../tokens/states.md)를 그대로 따른다. 이 문서는 그 상태들을 컴포넌트의 Variant·Size와 어떻게 곱해서 표로 고정하는지만 다룬다.
 
 ## 4. 예시 — Button
 

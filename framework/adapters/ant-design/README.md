@@ -11,6 +11,9 @@ Ant Design v5 어댑터. 공통 스펙(`framework/specs/tokens/*.md`)에 Ant Des
 | `specs/tokens/radius.md` | [`radius.md`](./radius.md) |
 | `specs/tokens/layout.md`, `specs/tokens/spacing.md` | [`layout.md`](./layout.md) |
 | `specs/tokens/icon.md` | [`icon.md`](./icon.md) |
+| `specs/tokens/elevation.md` | 없음 |
+
+`specs/tokens/elevation.md`가 "없음"인 이유: Ant Design v5의 Seed→Map 파생 알고리즘 소스(`seed.ts`, `genColorMapToken.ts`, `genFontSizes.ts`, `genRadius.ts`, `genSizeMapToken.ts`)에 그림자 전용 생성기가 없다 — `Card`/`Modal` 등 컴포넌트가 각자 고정된 `box-shadow` 값을 쓸 뿐, KRDS·Material처럼 공통 스펙의 단계 개념(`base/raised/overlay`)에 대응하는 시스템 레벨 elevation 토큰 자체가 없다. 실제 컴포넌트별 그림자 값까지 확인되면 이 행을 갱신하고 `elevation.md`를 신설한다.
 
 ## 참고 소스
 

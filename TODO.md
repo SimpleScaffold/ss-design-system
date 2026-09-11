@@ -10,12 +10,13 @@
 - [ ] 대본 리허설 & 시간 측정
 
 ## 2. 범용 프레임워크 — 스펙 (`framework/specs/`)
-- [x] tokens: colors / spacing / radius / typography / icon / layout / elevation — 1차 작성 완료
-- [x] patterns: media (이미지·모달·텍스트 말줄임 전부 포함 — 이전 항목 "그 외 patterns 미착수"는 착오였음, 삭제)
+- [x] tokens: colors / spacing / radius / typography / icon / layout / elevation — 1차 작성 완료, 이후 icon/radius/spacing/colors §10을 어댑터 수준으로 보강
+- [x] patterns: media (이미지·모달·텍스트 말줄임 전부 포함) + navigation + form 신설 완료
 - [x] components 스펙 신설 — `components/component-contract.md` (Variant × Size × State → Token 계약)
 - [x] validation 스펙 신설 — `validation/accessibility-checklist.md`
-- [x] pipeline 스펙 신설 — `pipeline.md` (슬라이드 30 "종합" 개념 — 규칙→어댑터→토큰 파일→프레임워크 설정→AI 컨텍스트 5단계). 실제 산출물: `examples/tokens/{tokens.css,tailwind.config.js}`, `examples/design-rules.md`(슬라이드 31 대응, 브랜드 중립 빈 템플릿)
-- [ ] patterns 그 외 항목 확장 (media 외에 navigation/form 같은 패턴 추가 여부 검토)
+- [x] pipeline 스펙 신설 — `pipeline.md` (슬라이드 30 "종합" 개념 — 규칙→어댑터→토큰 파일→프레임워크 설정→AI 컨텍스트 5단계). 실제 산출물: `examples/tokens/{tokens.css,tailwind.config.js}`, `examples/design-rules.md`(슬라이드 31 대응, 브랜드 중립 빈 템플릿, 10개 스펙 전부 커버하도록 확장)
+- [x] `token-architecture.md`(Primitive→Semantic→Component 3계층) · `states.md`(상태 목록·전이 방향·터치 타깃) · `motion.md`(duration/easing, 값은 어댑터가 채움) 신설 — 다섯 시스템이 수렴하는 구조와 저장소 내부 근거만으로 승격
+- [ ] `motion.md`의 실제 어댑터 매핑(duration/easing 실값)은 외부 공식 소스 확인이 필요해 보류
 
 ## 3. 범용 프레임워크 — 어댑터 (`framework/adapters/`)
 - [x] `krds/` — colors/typography/radius/layout/icon/elevation 토큰 실제 매핑 완료 (KRDS 공식 스타일 가이드 9페이지 전체 + krds-uiux 토큰 JSON 기반, 고대비 모드는 `colors.md` §10). components/validation은 공통 스펙 자체가 없어 매핑 보류
@@ -33,7 +34,7 @@
 - [ ] `framework/scripts/` — 검증·스코어링 하네스 미착수 (`specs/validation/accessibility-checklist.md`의 §2·§5 항목부터 자동화 후보)
 - [ ] `framework/resources/` — 체크리스트, manifest 미착수
 - [x] material의 elevation을 `layout.md`에서 `elevation.md`로 분리 완료
-- [ ] `framework/adapters/` 정합성 — krds/material/ant-design 일부 문서(radius/icon/layout 등)에 토큰화 예시 섹션 누락, ant-design은 elevation 개념 자체가 없음을 명시적으로 기록할지 검토
+- [x] `framework/adapters/` 정합성 — krds(radius/icon/layout/elevation), material(icon), ant-design(icon) 토큰화 예시 6건 보강 완료. ant-design은 `README.md`에 elevation "없음 + 이유" 명시 완료. `krds/README.md`·`_template/README.md`의 낡은 매핑 표도 갱신
 
 ## 6. 참고자료 (`references/`)
 - [x] KRDS, taste-skill, 색 조합 16가지 수집 완료
@@ -53,9 +54,10 @@
 - [x] 실제 프로덕션 모노레포(shadcn/ui 기반 디자인 시스템 운영 사례)를 조사해 익명화·일반화한 6개 문서 작성 완료 — 3-tier 토큰 아키텍처(`token-architecture.md`), 멀티 브랜드 스킨 + Radix 12-step 팔레트(`multi-skin-tokens.md`), cva/cn() 컨벤션 + 타입 레벨 강제(`component-conventions.md`), 8px 공통 스펙과 다른 4px 그리드(`spacing-grid.md`), 규칙 문서화와 실제 준수의 간극(`gaps-and-lessons.md`)
 
 ## 8. 프롬프트 & 도구 (`prompts/`, `tools/`)
-- [x] `prompts/framework/` — spec-authoring, skill-design 메타 프롬프트 작성
+- [x] `prompts/framework/` — spec-authoring, skill-design, adapter-authoring, ai-context, audit 메타 프롬프트 작성 완료
 - [x] `prompts/research/` — design-system-reference, case-study-collection 메타 프롬프트 작성
-- [x] `prompts/demo/` — 라이브 데모용 프롬프트 작성 (`toss.md`, `naver.md`, `daangn.md`)
+- [x] `prompts/demo/` — 라이브 데모용 프롬프트 작성 (`toss.md`, `naver.md`, `daangn.md`), `[색상]` 블록 중복 제거 + `[아이콘]`·`[상태]` 블록 추가, `## 관련` 섹션 통일
+- [x] `prompts/README.md` 신설 — framework/research/demo 3분할 인덱스 + "언제 어느 것을 쓰는지" 표
 - [ ] `tools/image-gen`, `tools/screenshot`, `tools/misc` 구현 상태 점검 (`tools/README.md`, `tools/misc/`는 이미 실제 내용 있음 — image-gen/screenshot만 미확인)
 
 ## 9. AI 전달 단계 (슬라이드 31)
@@ -63,4 +65,4 @@
 - [ ] Stitch/Claude Design 등 실제 입력 데모 준비
 
 ---
-우선순위 제안: `components`/`validation` 공통 스펙 신설, `framework/skills`(plan/transform/improve) 설계, 나머지 참고자료(material-design/ant-design 철학 요약 + carbon/fluent/apple-hig 신규 + ai-agent-workflows/conference-talks 사례 수집), `prompts/framework`·`prompts/research` 메타 프롬프트까지 모두 완료. 남은 항목 중 **데모 캡처 이미지 실제 생성 + Google Slides 삽입 / 대본 리허설**은 Stitch·Claude Design 조작 및 실제 발표 연습이 필요해 사람이 직접 해야 하는 작업. 다음으로 자동화 가능한 우선순위는 **① `framework/adapters` 정합성 정리(material의 elevation 분리, 토큰화 예시 누락 보강) → ② `framework/scripts` 검증 하네스 구현 → ③ `design-examples/`·`tools/image-gen`·`tools/screenshot` 상태 점검**.
+우선순위 제안: `components`/`validation` 공통 스펙 신설, `framework/skills`(plan/transform/improve) 설계, 나머지 참고자료(material-design/ant-design 철학 요약 + carbon/fluent/apple-hig 신규 + ai-agent-workflows/conference-talks 사례 수집), `prompts/framework`·`prompts/research` 메타 프롬프트, `framework/specs`의 역전 현상 해소(icon/radius/spacing/media를 어댑터 수준으로 보강), 신규 스펙 4종(`token-architecture`/`states`/`motion`/`navigation`+`form`), `framework/adapters` 정합성 정리(토큰화 예시 6건, ant-design elevation "없음" 명시, 낡은 인덱스 갱신), 프롬프트 층 신설(`adapter-authoring`/`ai-context`/`audit`/`prompts/README.md`)까지 모두 완료. 남은 항목 중 **데모 캡처 이미지 실제 생성 + Google Slides 삽입 / 대본 리허설**은 Stitch·Claude Design 조작 및 실제 발표 연습이 필요해 사람이 직접 해야 하는 작업. 다음으로 자동화 가능한 우선순위는 **① `framework/scripts` 검증 하네스 구현 → ② `motion.md`의 실제 어댑터 매핑(외부 공식 소스 확인 필요) → ③ `design-examples/`·`tools/image-gen`·`tools/screenshot` 상태 점검**.

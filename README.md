@@ -61,7 +61,9 @@ ss-design-system/
 
 ## 진행 상태
 
-- [ ] 발표 스토리라인 확정 (`talk/outline.md`)
-- [ ] 범용 스펙 스키마 초안 (`framework/specs/`)
-- [ ] KRDS 어댑터 이식 (`framework/adapters/krds/`)
-- [ ] 참고자료 수집 (`references/`)
+- [x] 발표 스토리라인 확정 (`talk/outline.md`)
+- [x] 범용 스펙 스키마 초안 (`framework/specs/`)
+- [x] KRDS 어댑터 이식 (`framework/adapters/krds/`)
+- [x] 참고자료 수집 (`references/`)
+
+세부 진행 상황과 남은 항목은 [`TODO.md`](./TODO.md) 참고.

@@ -32,3 +32,17 @@ Ant Design 아이콘은 KRDS/Material처럼 고정 px 그리드를 강제하지 
 ## 라이브러리에 없는 아이콘이 필요할 때
 
 공통 스펙의 3가지 대응 방법에 더해, Ant Design은 `@ant-design/icons`의 `createFromIconfontCN`으로 커스텀 SVG를 같은 컴포넌트 인터페이스로 등록하는 공식 경로를 제공한다 — 새 아이콘도 기존 아이콘과 동일하게 `currentColor`/`1em` 상속을 그대로 따르게 만들 수 있다.
+
+## 토큰화 예시
+
+```css
+:root {
+  --icon-size: 16px;    /* 텍스트 상속이 기본, 독립 사용 시 참고값 */
+  --icon-size-lg: 24px;
+}
+
+.icon {
+  color: currentColor; /* 별도 팔레트 없이 텍스트 색 상속 */
+  font-size: var(--icon-size);
+}
+```

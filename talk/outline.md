@@ -25,6 +25,6 @@
 - [x] 발표 스토리라인 확정 (`talk/outline.md`, `talk/script.md`)
 - [ ] 슬라이드 제작 (`talk/slides/`)
 - [ ] 라이브 데모 시나리오 (`talk/demo/`)
-- [ ] 범용 스펙 스키마 초안 (`framework/specs/tokens/`, `framework/specs/patterns/`) — colors/spacing/radius/typography/icon/layout 1차 작성 완료, components·validation 항목은 미착수
-- [ ] KRDS 어댑터 이식 (`framework/adapters/krds/`) — 참고 소스(`krds-uiux`) 링크만 연결된 상태, 실제 토큰 매핑은 미착수
+- [x] 범용 스펙 스키마 초안 (`framework/specs/tokens/`, `framework/specs/patterns/`) — tokens 10종 + patterns(media/navigation/form) + components·validation 전부 작성 완료
+- [x] KRDS 어댑터 이식 (`framework/adapters/krds/`) — KRDS 공식 스타일 가이드 9페이지 + `krds-uiux` 토큰 JSON 기반 실제 매핑 완료
 - [ ] 참고자료 수집 (`references/`) — KRDS, taste-skill, 색 조합 16가지 추가 완료

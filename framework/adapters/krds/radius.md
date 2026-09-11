@@ -37,3 +37,18 @@ radius = 컨테이너 높이 × 1/8 (0.125)
 
 - 버튼/인풋처럼 크기가 고정된 요소 → **px 단위**.
 - 프로필 사진처럼 완전한 원형이 필요한 요소만 **% 단위**(그 외에는 % 사용 지양 — 작은 컴포넌트에 50%를 적용하면 의도보다 과하게 둥글어짐).
+
+## 토큰화 예시
+
+공통 스펙(`framework/specs/tokens/radius.md`) 형식에 KRDS 실제 값을 대입하면 다음과 같다.
+
+```css
+:root {
+  --radius-xsmall: 2px;  /* 인디케이터, 배지, 프로그레스 바 */
+  --radius-small: 4px;   /* Chips, Checkbox, Radio, Switch, Tag */
+  --radius-medium: 6px;  /* Button, Text input, Textarea, Select — 기본값 */
+  --radius-large: 10px;  /* Card, Dialog */
+  --radius-xlarge: 12px; /* Banner, Dialog, Bottom sheet — 상한값 */
+  --radius-full: 100%;   /* 프로필 사진 등 완전한 원형 전용 */
+}
+```

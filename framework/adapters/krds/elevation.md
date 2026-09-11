@@ -61,3 +61,24 @@
 | `border-width.variable-medium` | `0.2rem` (2px) | `0.3rem` (3px) |
 
 공통 스펙 §4의 "다크 모드에서는 보더를 더 굵게" 원칙의 실제 수치 — 선명한 화면 모드에서 보더가 정확히 **+1px(0.1rem)** 씩 두꺼워진다.
+
+## 토큰화 예시
+
+```css
+:root {
+  --surface-base: #ffffff;
+  --surface-raised: #f4f5f6;   /* gray-subtler */
+  --surface-overlay: #e6e8ea;  /* gray-subtle */
+  --dim: #000000bf;            /* black 75% */
+  --border-width-regular: 0.1rem;
+  --border-width-medium: 0.2rem;
+}
+
+[data-theme='high-contrast'] {
+  --surface-base: #1e2124;
+  --surface-raised: #131416;
+  --surface-overlay: #1e2124;
+  --border-width-regular: 0.2rem;
+  --border-width-medium: 0.3rem;
+}
+```

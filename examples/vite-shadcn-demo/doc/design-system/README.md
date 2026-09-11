@@ -1,6 +1,8 @@
 # design-system 문서
 
-이 프로젝트가 `framework/specs/` **전체**(스펙 파일 10개: `tokens/` 7종 + `patterns/media.md` + `components/component-contract.md` + `validation/accessibility-checklist.md`)와 `prompts/framework/color-tokens.md` 계약을 어떻게 적용했는지 **고정 값**과 **변동 값**으로 나눠 기록한다. `framework/specs/`에 실제로 존재하는 스펙 파일과 정확히 1:1로 대응하는 것이 목표라, 이 폴더의 파일 10쌍은 그 디렉터리 구조를 그대로 반영한다.
+이 프로젝트가 `framework/specs/`의 규칙과 `prompts/framework/color-tokens.md` 계약을 어떻게 적용했는지 **고정 값**과 **변동 값**으로 나눠 기록한다. 아래 10쌍은 이 프로젝트를 만들 당시 존재하던 스펙 파일(`tokens/` 7종 + `patterns/media.md` + `components/component-contract.md` + `validation/accessibility-checklist.md`)과 1:1로 대응한다.
+
+> `framework/specs/`는 이후 `tokens/token-architecture.md`·`tokens/states.md`·`tokens/motion.md`·`patterns/navigation.md`·`patterns/form.md` 5개가 추가돼 총 14개가 됐다 — 이 폴더는 아직 그 5개를 반영하지 않은 10쌍 스냅샷이다. 새 스펙까지 `고정/`·`변동/` 쌍으로 채우는 것은 이 프로젝트의 후속 과제다.
 
 - [`고정/`](./고정/) — 브랜드·프로젝트가 바뀌어도 그대로인 규칙. 저장소 공통 스펙(`framework/specs/`)을 그대로 옮긴 것이라, 이 프로젝트만의 사정으로 고치지 않는다.
 - [`변동/`](./변동/) — 이 프로젝트가 그 규칙 위에 실제로 채운 값(팔레트 oklch, 폰트, radius px, 실제 컴포넌트 코드 위치 등). 다른 프로젝트가 이 템플릿을 복제하면 `변동/`만 다시 채우면 된다.
